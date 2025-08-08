@@ -15,6 +15,7 @@ import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import HowItWorks from "@/pages/HowItWorks";
 import Services from "@/pages/Services";
+import ServicesShowcase from "@/pages/ServicesShowcase";
 import ClientLogin from "@/pages/ClientLogin";
 import NotFound from "@/pages/NotFound";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
@@ -102,6 +103,7 @@ const App = () => {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/how-it-works" element={<HowItWorks />} />
                   <Route path="/services" element={<Services />} />
+                  <Route path="/services-showcase" element={<ServicesShowcase />} />
                   <Route path="/client-login" element={<ClientLogin />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/services/ai-agents" element={<AiAgents />} />
