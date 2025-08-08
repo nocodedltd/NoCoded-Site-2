@@ -1,150 +1,24 @@
+import React, { useEffect, useState } from "react";
+import { motion, useScroll, useTransform, useMotionValue, useSpring, animate } from "framer-motion";
+import { ChevronRight, ArrowRight, Star, Zap, Target, Users, Clock, TrendingUp, CheckCircle, Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useInView, useScroll, useTransform, useMotionValue, useSpring, animate } from "framer-motion";
-import { ChevronRight, ArrowRight, Star, Zap, Target, Users, Clock, TrendingUp, CheckCircle, Play, Calendar } from "lucide-react";
+// Import new components
+import GlowBackground from "@/components/ui/GlowBackground";
+import Section from "@/components/ui/Section";
+import FeatureCard from "@/components/ui/FeatureCard";
+import LogoGrid from "@/components/ui/LogoGrid";
+import AltMediaBlock from "@/components/ui/AltMediaBlock";
+import { fadeUp, staggerContainer, scaleIn, cardHover } from "@/lib/motionVariants";
 
-// Motion presets
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
-};
-
-const stagger = (st = 0.1) => ({
-  hidden: {},
-  visible: { transition: { staggerChildren: st } }
-});
-
-const float = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { 
-    opacity: 1, 
-    scale: 1,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-  }
-};
-
-// UI Components
-const Container = ({ children, className = "" }) => (
-  <div className={`mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 ${className}`}>
-    {children}
-  </div>
-);
-
-const Eyebrow = ({ children }) => (
-  <motion.div 
-    className="inline-flex items-center gap-2 text-secondary text-sm uppercase tracking-[0.2em] font-medium"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-  >
-    {children}
-  </motion.div>
-);
-
-const H1 = ({ children, className = "" }) => (
-  <h1 className={`font-display text-primary font-extrabold tracking-[0.5px] leading-[1.05] text-5xl sm:text-6xl md:text-7xl ${className}`}>
-    {children}
-  </h1>
-);
-
-const H2 = ({ children, className = "" }) => (
-  <h2 className={`font-display text-primary font-extrabold tracking-[0.5px] leading-tight text-3xl sm:text-4xl md:text-5xl ${className}`}>
-    {children}
-  </h2>
-);
-
-const Copy = ({ children, className = "" }) => (
-  <p className={`text-secondary/90 text-base md:text-lg leading-[1.6] max-w-[70ch] ${className}`}>
-    {children}
-  </p>
-);
-
-const ButtonPrimary = ({ children, className = "", ...props }) => (
-  <motion.button
-    className={`inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-semibold text-ink bg-[#6e74af] shadow-lg hover:shadow-xl transition-all duration-300 ${className}`}
-    whileHover={{ 
-      scale: 1.02,
-      boxShadow: "0 20px 40px rgba(110, 116, 175, 0.3)"
-    }}
-    whileTap={{ scale: 0.98 }}
-    {...props}
-  >
-    {children}
-    <ArrowRight className="w-4 h-4" />
-  </motion.button>
-);
-
-const ButtonSecondary = ({ children, className = "", ...props }) => (
-  <motion.button
-    className={`inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-semibold text-primary border-2 border-primary/40 hover:border-primary/80 bg-transparent hover:bg-primary/5 transition-all duration-300 ${className}`}
-    whileHover={{ 
-      scale: 1.02,
-      boxShadow: "0 0 0 1px rgba(249, 222, 201, 0.2)"
-    }}
-    whileTap={{ scale: 0.98 }}
-    {...props}
-  >
-    {children}
-  </motion.button>
-);
-
-// Hero Section
+// Hero Section with enhanced styling
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Particle Network */}
-        <div className="absolute inset-0 opacity-20">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-primary rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                x: [0, 20, 0],
-                scale: [1, 1.5, 1],
-              }}
-              transition={{ 
-                duration: 3 + Math.random() * 2, 
-                repeat: Infinity, 
-                ease: "easeInOut",
-                delay: Math.random() * 2
-              }}
-            />
-          ))}
-        </div>
-        
-        {/* Flowing Lines */}
-        <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.1 }}>
-          <motion.path
-            d="M 0 50 Q 25 25 50 50 T 100 50"
-            stroke="url(#gradient)"
-            strokeWidth="2"
-            fill="none"
-            animate={{
-              d: [
-                "M 0 50 Q 25 25 50 50 T 100 50",
-                "M 0 50 Q 25 75 50 50 T 100 50",
-                "M 0 50 Q 25 25 50 50 T 100 50",
-              ],
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <defs>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#6e74af" />
-              <stop offset="100%" stopColor="#6e74af" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      <Container className="relative z-10 text-center -translate-y-6 md:-translate-y-10 lg:-translate-y-16 xl:-translate-y-20">
+      <GlowBackground variant="hero" />
+      
+      {/* Content */}
+      <div className="container-nc relative z-10 text-center -translate-y-6 md:-translate-y-10 lg:-translate-y-16 xl:-translate-y-20">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -172,7 +46,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <Eyebrow>Welcome to the Future</Eyebrow>
+          <div className="eyebrow">Welcome to the Future</div>
         </motion.div>
         
         <motion.div
@@ -181,19 +55,19 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.4 }}
           className="mt-6"
         >
-          <H1>
+          <h1 className="h1">
             Automate.{" "}
             <span className="relative">
               Accelerate.
               <motion.div
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-[#6e74af]"
+                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-secondary to-accent"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 1 }}
               />
             </span>{" "}
-            <span className="text-[#6e74af]">Grow.</span>
-          </H1>
+            <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">Grow.</span>
+          </h1>
         </motion.div>
         
         <motion.div
@@ -202,9 +76,9 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-8"
         >
-          <Copy className="mx-auto max-w-3xl">
+          <p className="copy mx-auto max-w-3xl">
             We help UK businesses cut out repetitive work, boost productivity, and create seamless customer experiences so you can focus on growth, not admin.
-          </Copy>
+          </p>
         </motion.div>
         
         <motion.div
@@ -213,17 +87,22 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.8 }}
           className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <ButtonPrimary>Book Your Free Automation Audit</ButtonPrimary>
-          <ButtonSecondary>See How It Works</ButtonSecondary>
+          <Link to="/contact" className="btn-primary">
+            Book Your Free Automation Audit
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <Link to="/how-it-works" className="btn-secondary">
+            See How It Works
+          </Link>
         </motion.div>
-      </Container>
+      </div>
     </section>
   );
 };
 
-// Impact Calculator
+// Impact Calculator with enhanced styling
 const ImpactCalculator = () => {
-  const [calculationType, setCalculationType] = useState('time'); // 'time' or 'cost'
+  const [calculationType, setCalculationType] = useState('time');
   const [teamSize, setTeamSize] = useState(5);
   const [hoursPerWeek, setHoursPerWeek] = useState(10);
   const [hourlyWage, setHourlyWage] = useState(25);
@@ -249,124 +128,113 @@ const ImpactCalculator = () => {
   }, [savedWeeks, savedCost, calculationType, countUpValue]);
 
   return (
-    <section className="py-24 bg-gradient-to-b from-base to-base/95">
-      <Container>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger()}
-          className="text-center mb-16"
-        >
-          <motion.div variants={fadeUp}>
-            <Eyebrow>Impact Calculator</Eyebrow>
-          </motion.div>
-          <motion.div variants={fadeUp} className="mt-6">
-            <H2>Your Time & Money, Reclaimed</H2>
-          </motion.div>
-          <motion.div variants={fadeUp} className="mt-6">
-            <Copy className="mx-auto max-w-3xl">
-              Discover how much time and cost you could save by automating the boring stuff. In just seconds, see your potential gains then let's make them happen.
-            </Copy>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger(0.2)}
-          className="grid lg:grid-cols-2 gap-12 items-start"
-        >
-          {/* Input Panel */}
-          <motion.div variants={float} className="space-y-8">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
-              <h3 className="text-primary font-bold text-xl mb-6">Calculate Your Savings</h3>
-              
-              {/* Calculation Type Toggle */}
-              <div className="mb-6">
-                <label className="block text-secondary text-sm font-medium mb-3">What would you like to calculate?</label>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setCalculationType('time')}
-                    className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all ${
-                      calculationType === 'time'
-                        ? 'bg-[#6e74af] text-white'
-                        : 'bg-white/10 text-secondary hover:bg-white/20'
-                    }`}
-                  >
-                    Time Savings
-                  </button>
-                  <button
-                    onClick={() => setCalculationType('cost')}
-                    className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all ${
-                      calculationType === 'cost'
-                        ? 'bg-[#6e74af] text-white'
-                        : 'bg-white/10 text-secondary hover:bg-white/20'
-                    }`}
-                  >
-                    Cost Savings
-                  </button>
-                </div>
-              </div>
-              
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-secondary text-sm font-medium mb-2">Team Size</label>
-                  <input
-                    type="number"
-                    min="1"
-                    value={teamSize}
-                    onChange={(e) => setTeamSize(parseInt(e.target.value) || 0)}
-                    className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-secondary text-sm font-medium mb-2">
-                    {calculationType === 'time' ? 'Hours per Employee per Week on Repetitive Tasks' : 'Average Hourly Wage (£)'}
-                  </label>
-                  <input
-                    type="number"
-                    min="0"
-                    value={calculationType === 'time' ? hoursPerWeek : hourlyWage}
-                    onChange={(e) => {
-                      if (calculationType === 'time') {
-                        setHoursPerWeek(parseInt(e.target.value) || 0);
-                      } else {
-                        setHourlyWage(parseInt(e.target.value) || 0);
-                      }
-                    }}
-                    className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
-                  />
-                </div>
-                
-                {calculationType === 'time' && (
-                  <div>
-                    <label className="block text-secondary text-sm font-medium mb-2">
-                      Automation Percentage: {automationPercent}%
-                    </label>
-                    <input
-                      type="range"
-                      min="0"
-                      max="100"
-                      value={automationPercent}
-                      onChange={(e) => setAutomationPercent(parseInt(e.target.value))}
-                      className="w-full accent-primary"
-                    />
-                  </div>
-                )}
+    <Section
+      eyebrow="Impact Calculator"
+      heading="Your Time & Money, Reclaimed"
+      description="Discover how much time and cost you could save by automating the boring stuff. In just seconds, see your potential gains then let's make them happen."
+      glow="section"
+      className="bg-gradient-to-b from-base to-base/95"
+    >
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer(0.2)}
+        className="grid lg:grid-cols-2 gap-12 items-start"
+      >
+        {/* Input Panel */}
+        <motion.div variants={scaleIn} className="space-y-8">
+          <div className="card-dark p-8">
+            <h3 className="text-primary font-bold text-xl mb-6">Calculate Your Savings</h3>
+            
+            {/* Calculation Type Toggle */}
+            <div className="mb-6">
+              <label className="block text-secondary text-sm font-medium mb-3">What would you like to calculate?</label>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setCalculationType('time')}
+                  className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all ${
+                    calculationType === 'time'
+                      ? 'bg-gradient-to-r from-secondary to-accent text-white'
+                      : 'bg-white/10 text-secondary hover:bg-white/20'
+                  }`}
+                >
+                  Time Savings
+                </button>
+                <button
+                  onClick={() => setCalculationType('cost')}
+                  className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all ${
+                    calculationType === 'cost'
+                      ? 'bg-gradient-to-r from-secondary to-accent text-white'
+                      : 'bg-white/10 text-secondary hover:bg-white/20'
+                  }`}
+                >
+                  Cost Savings
+                </button>
               </div>
             </div>
-          </motion.div>
+            
+            <div className="space-y-6">
+              <div>
+                <label className="block text-secondary text-sm font-medium mb-2">Team Size</label>
+                <input
+                  type="number"
+                  min="1"
+                  value={teamSize}
+                  onChange={(e) => setTeamSize(parseInt(e.target.value) || 0)}
+                  className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-secondary text-sm font-medium mb-2">
+                  {calculationType === 'time' ? 'Hours per Employee per Week on Repetitive Tasks' : 'Average Hourly Wage (£)'}
+                </label>
+                <input
+                  type="number"
+                  min="0"
+                  value={calculationType === 'time' ? hoursPerWeek : hourlyWage}
+                  onChange={(e) => {
+                    if (calculationType === 'time') {
+                      setHoursPerWeek(parseInt(e.target.value) || 0);
+                    } else {
+                      setHourlyWage(parseInt(e.target.value) || 0);
+                    }
+                  }}
+                  className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all"
+                />
+              </div>
+              
+              {calculationType === 'time' && (
+                <div>
+                  <label className="block text-secondary text-sm font-medium mb-2">
+                    Automation Percentage: {automationPercent}%
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={automationPercent}
+                    onChange={(e) => setAutomationPercent(parseInt(e.target.value))}
+                    className="w-full accent-accent"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.div>
 
-          {/* Results Panel */}
-          <motion.div variants={float} className="space-y-6">
-            <div className="bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm border border-primary/20 rounded-3xl p-8 text-center">
+        {/* Results Panel */}
+        <motion.div variants={scaleIn} className="space-y-6">
+          <div className="relative">
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-xl" />
+            
+            <div className="relative bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm border border-primary/20 rounded-3xl p-8 text-center">
               <h3 className="text-primary font-bold text-xl mb-6">Your Results</h3>
               
               <div className="space-y-6">
-                <div className="bg-black/30 rounded-2xl p-6">
+                <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6">
                   <div className="text-secondary text-sm mb-2">
                     {calculationType === 'time' ? 'Hours Saved Annually' : 'Cost Saved Annually'}
                   </div>
@@ -376,7 +244,7 @@ const ImpactCalculator = () => {
                   <div className="text-secondary text-sm mt-2">
                     {calculationType === 'time' 
                       ? `That's ${savedDays} working days per year`
-                      : `That's £${(savedCost / 12).toLocaleString()} per month`
+                      : `That's £${Math.round(savedCost / 12).toLocaleString()} per month`
                     }
                   </div>
                 </div>
@@ -394,17 +262,20 @@ const ImpactCalculator = () => {
                   </div>
                 </div>
                 
-                <ButtonPrimary className="w-full">Book Free Automation Audit</ButtonPrimary>
+                <Link to="/contact" className="btn-primary w-full justify-center">
+                  Book Free Automation Audit
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
-      </Container>
-    </section>
+      </motion.div>
+    </Section>
   );
 };
 
-// Pain Points Section
+// Pain Points with enhanced cards
 const PainPoints = () => {
   const painPoints = [
     {
@@ -425,59 +296,34 @@ const PainPoints = () => {
   ];
 
   return (
-    <section className="py-24">
-      <Container>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger()}
-          className="text-center mb-16"
-        >
-          <motion.div variants={fadeUp}>
-            <Eyebrow>Challenges</Eyebrow>
-          </motion.div>
-          <motion.div variants={fadeUp} className="mt-6">
-            <H2>Still running on manual processes?</H2>
-          </motion.div>
-          <motion.div variants={fadeUp} className="mt-6">
-            <Copy className="mx-auto max-w-3xl">
-              Every day without automation is another day your competitors pull ahead. Manual systems slow you down, cost you money, and make scaling harder than it needs to be.
-            </Copy>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger(0.2)}
-          className="grid md:grid-cols-3 gap-8"
-        >
-          {painPoints.map((point, index) => (
-            <motion.div
-              key={point.title}
-              variants={float}
-              whileHover={{ 
-                y: -8,
-                boxShadow: "0 20px 40px rgba(249, 222, 201, 0.15)"
-              }}
-              className="bg-gradient-to-br from-base/80 to-base/60 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-primary/30 transition-all duration-300"
-            >
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
-                <point.icon className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-primary font-bold text-xl mb-4 text-center">{point.title}</h3>
-              <p className="text-secondary/80 text-center leading-relaxed">{point.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </Container>
-    </section>
+    <Section
+      eyebrow="Challenges"
+      heading="Still running on manual processes?"
+      description="Every day without automation is another day your competitors pull ahead. Manual systems slow you down, cost you money, and make scaling harder than it needs to be."
+      glow="subtle"
+    >
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer(0.2)}
+        className="grid md:grid-cols-3 gap-8"
+      >
+        {painPoints.map((point) => (
+          <FeatureCard
+            key={point.title}
+            icon={point.icon}
+            title={point.title}
+            description={point.description}
+            glowColor="primary"
+          />
+        ))}
+      </motion.div>
+    </Section>
   );
 };
 
-// Core Services Section
+// Core Services with enhanced feature cards
 const CoreServices = () => {
   const services = [
     {
@@ -494,7 +340,7 @@ const CoreServices = () => {
     {
       icon: Users,
       title: "AI Agents for Everyday Tasks",
-      description: "From sales follow-ups to HR admin, our AI-powered assistants connect with your existing tools and handle repetitive work for you — without dropping the ball."
+      description: "From sales follow-ups to HR admin, our AI-powered assistants connect with your existing tools and handle repetitive work for you without dropping the ball."
     },
     {
       icon: Target,
@@ -504,71 +350,49 @@ const CoreServices = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-base/95 to-base">
-      <Container>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger()}
-          className="text-center mb-16"
-        >
-          <motion.div variants={fadeUp}>
-            <Eyebrow>Our Core Services</Eyebrow>
-          </motion.div>
-          <motion.div variants={fadeUp} className="mt-6">
-            <H2>Four Ways We Supercharge Your Business</H2>
-          </motion.div>
-          <motion.div variants={fadeUp} className="mt-6">
-            <Copy className="mx-auto max-w-3xl">
-              We transform your business through four core pillars of modern efficiency, from our flagship 90-day transformation to custom solutions.
-            </Copy>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger(0.2)}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              variants={float}
-              whileHover={{ 
-                y: -8,
-                boxShadow: "0 20px 40px rgba(249, 222, 201, 0.2)"
-              }}
-              className={`rounded-3xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center bg-[rgba(249,222,201,0.45)] border border-[#f9dec9]/30 ${
-                service.flagship ? 'ring-2 ring-[#6e74af]/50' : ''
-              }`}
-            >
-              {service.flagship && (
-                <div className="mb-4">
-                  <span className="inline-block bg-[#6e74af] text-white text-xs font-bold px-3 py-1 rounded-full">
-                    FLAGSHIP
-                  </span>
-                </div>
-              )}
-              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-ink/10 rounded-full flex items-center justify-center mb-4 lg:mb-6 mx-auto">
-                <service.icon className="w-6 h-6 lg:w-8 lg:h-8 text-ink" />
-              </div>
-              <h3 className="text-ink font-bold text-lg lg:text-xl mb-3 lg:mb-4">{service.title}</h3>
-              <p className="text-ink/80 leading-relaxed mb-4 lg:mb-6 text-sm lg:text-base mx-auto">{service.description}</p>
-              <ButtonSecondary className="border-ink/20 text-ink hover:bg-ink/5 text-sm mx-auto">
-                Learn More
-              </ButtonSecondary>
-            </motion.div>
-          ))}
-        </motion.div>
-      </Container>
-    </section>
+    <Section
+      eyebrow="Our Core Services"
+      heading="Four Ways We Supercharge Your Business"
+      description="We transform your business through four core pillars of modern efficiency, from our flagship 90-day transformation to custom solutions."
+      glow="section"
+      className="bg-gradient-to-b from-base/95 to-base"
+    >
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer(0.2)}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+      >
+        {services.map((service) => (
+          <FeatureCard
+            key={service.title}
+            icon={service.icon}
+            title={service.title}
+            description={service.description}
+            badge={service.flagship ? "FLAGSHIP" : undefined}
+            glowColor="secondary"
+          />
+        ))}
+      </motion.div>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="text-center mt-12"
+      >
+        <Link to="/services" className="btn-secondary">
+          Explore All Services
+          <ChevronRight className="w-4 h-4" />
+        </Link>
+      </motion.div>
+    </Section>
   );
 };
 
-// Process Section
+// Process Section with enhanced styling
 const Process = () => {
   const steps = [
     {
@@ -584,79 +408,69 @@ const Process = () => {
     {
       number: "03",
       title: "Implementation", 
-                    description: "We build, test, and launch your automation integrating with your systems and training your team."
+      description: "We build, test, and launch your automation integrating with your systems and training your team."
     }
   ];
 
   return (
-    <section className="py-24">
-      <Container>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger()}
-          className="text-center mb-16"
-        >
-          <motion.div variants={fadeUp}>
-            <Eyebrow>Our Process</Eyebrow>
-          </motion.div>
-          <motion.div variants={fadeUp} className="mt-6">
-            <H2>A Proven 3‑Step Process That Delivers</H2>
-          </motion.div>
-          <motion.div variants={fadeUp} className="mt-6">
-            <Copy className="mx-auto max-w-3xl">
-              We follow a systematic approach that ensures your automation project succeeds from start to finish.
-            </Copy>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger(0.3)}
-          className="relative"
-        >
-          {/* Connecting Line */}
-          <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent transform -translate-y-1/2 hidden md:block" />
-          
-          <div className="grid md:grid-cols-3 gap-8 relative">
-            {steps.map((step, index) => (
+    <Section
+      eyebrow="Our Process"
+      heading="A Proven 3‑Step Process That Delivers"
+      description="We follow a systematic approach that ensures your automation project succeeds from start to finish."
+      glow="subtle"
+    >
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer(0.3)}
+        className="relative"
+      >
+        {/* Connecting Line */}
+        <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent transform -translate-y-1/2 hidden md:block" />
+        
+        <div className="grid md:grid-cols-3 gap-8 relative">
+          {steps.map((step) => (
+            <motion.div
+              key={step.number}
+              variants={scaleIn}
+              whileHover="hover"
+              initial="rest"
+              animate="rest"
+              className="relative"
+            >
               <motion.div
-                key={step.number}
-                variants={float}
-                whileHover={{ 
-                  y: -8,
-                  boxShadow: "0 20px 40px rgba(249, 222, 201, 0.2)"
-                }}
-                className="bg-primary text-ink rounded-3xl p-8 border border-primary/70 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+                variants={cardHover}
+                className="bg-gradient-to-br from-primary/90 to-primary backdrop-blur-sm border border-primary rounded-3xl p-8 text-center h-full"
               >
-                <div className="w-16 h-16 bg-ink/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 mx-auto">
                   <span className="text-ink font-bold text-xl">{step.number}</span>
                 </div>
                 <h3 className="text-ink font-bold text-xl mb-4">{step.title}</h3>
                 <p className="text-ink/80 leading-relaxed">{step.description}</p>
               </motion.div>
-            ))}
-          </div>
-        </motion.div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-center mt-12"
-        >
-          <ButtonPrimary>Ready to start your automation journey?</ButtonPrimary>
-        </motion.div>
-      </Container>
-    </section>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="text-center mt-12"
+      >
+        <Link to="/contact" className="btn-primary">
+          Ready to start your automation journey?
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </motion.div>
+    </Section>
   );
 };
 
-// Testimonials Section
+// Testimonials with enhanced cards
 const Testimonials = () => {
   const testimonials = [
     {
@@ -682,48 +496,35 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-base to-base/95">
-      <Container>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger()}
-          className="text-center mb-16"
-        >
-          <motion.div variants={fadeUp}>
-            <Eyebrow>Client Success</Eyebrow>
-          </motion.div>
-          <motion.div variants={fadeUp} className="mt-6">
-            <H2>What Our Clients Say</H2>
-          </motion.div>
-          <motion.div variants={fadeUp} className="mt-6">
-            <Copy className="mx-auto max-w-2xl">
-              Real results from UK businesses who've transformed their operations with NoCoded.
-            </Copy>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger(0.2)}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
-        >
-          {testimonials.map((testimonial, index) => (
+    <Section
+      eyebrow="Client Success"
+      heading="What Our Clients Say"
+      description="Real results from UK businesses who've transformed their operations with NoCoded."
+      glow="section"
+      className="bg-gradient-to-b from-base to-base/95"
+    >
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer(0.2)}
+        className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+      >
+        {testimonials.map((testimonial, index) => (
+          <motion.div
+            key={index}
+            variants={scaleIn}
+            whileHover="hover"
+            initial="rest"
+            animate="rest"
+          >
             <motion.div
-              key={index}
-              variants={float}
-              whileHover={{ 
-                y: -8,
-                boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)"
-              }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 lg:p-8 hover:border-primary/30 transition-all duration-300 flex flex-col h-full"
+              variants={cardHover}
+              className="card-dark p-6 lg:p-8 h-full flex flex-col"
             >
               <div className="flex items-start gap-4 mb-6">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center">
                     <Star className="w-6 h-6 text-primary" />
                   </div>
                 </div>
@@ -740,63 +541,70 @@ const Testimonials = () => {
                 </div>
               </div>
             </motion.div>
-          ))}
-        </motion.div>
+          </motion.div>
+        ))}
+      </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-center mt-12"
-        >
-          <ButtonSecondary>Join the growing list of satisfied clients</ButtonSecondary>
-        </motion.div>
-      </Container>
-    </section>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="text-center mt-12"
+      >
+        <Link to="/contact" className="btn-secondary">
+          Join the growing list of satisfied clients
+          <ChevronRight className="w-4 h-4" />
+        </Link>
+      </motion.div>
+    </Section>
   );
 };
 
-// Final CTA Section
+// Final CTA with full-bleed gradient
 const FinalCTA = () => {
   return (
-    <section className="py-32 relative overflow-hidden">
-      {/* Background Animation */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10" />
+    <section className="relative py-32 overflow-hidden">
+      {/* Animated gradient background */}
       <motion.div
         className="absolute inset-0"
         animate={{
           background: [
-            "linear-gradient(45deg, rgba(249, 222, 201, 0.1) 0%, rgba(110, 116, 175, 0.1) 100%)",
-            "linear-gradient(45deg, rgba(110, 116, 175, 0.1) 0%, rgba(249, 222, 201, 0.1) 100%)",
-            "linear-gradient(45deg, rgba(249, 222, 201, 0.1) 0%, rgba(110, 116, 175, 0.1) 100%)",
+            "linear-gradient(135deg, rgba(249, 222, 201, 0.1) 0%, rgba(110, 116, 175, 0.1) 50%, rgba(76, 201, 240, 0.1) 100%)",
+            "linear-gradient(135deg, rgba(110, 116, 175, 0.1) 0%, rgba(76, 201, 240, 0.1) 50%, rgba(160, 132, 232, 0.1) 100%)",
+            "linear-gradient(135deg, rgba(76, 201, 240, 0.1) 0%, rgba(160, 132, 232, 0.1) 50%, rgba(249, 222, 201, 0.1) 100%)",
+            "linear-gradient(135deg, rgba(249, 222, 201, 0.1) 0%, rgba(110, 116, 175, 0.1) 50%, rgba(76, 201, 240, 0.1) 100%)",
           ],
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
       />
+      
+      {/* Mesh gradient overlay */}
+      <div className="absolute inset-0 bg-mesh-gradient opacity-5" />
 
-      <Container className="relative z-10 text-center">
+      <div className="container-nc relative z-10 text-center">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={stagger()}
+          variants={staggerContainer()}
         >
           <motion.div variants={fadeUp}>
-            <Eyebrow>Get Started Today</Eyebrow>
+            <div className="eyebrow">Get Started Today</div>
           </motion.div>
           <motion.div variants={fadeUp} className="mt-6">
-            <H2>Ready to See What's Possible?</H2>
+            <h2 className="h2">Ready to See What's Possible?</h2>
           </motion.div>
           <motion.div variants={fadeUp} className="mt-6">
-                      <Copy className="mx-auto max-w-2xl">
-            Book your free 30‑minute audit. We'll show you exactly where automation can save you time, money, and headaches before you invest a penny.
-          </Copy>
+            <p className="copy mx-auto max-w-2xl">
+              Book your free 30‑minute audit. We'll show you exactly where automation can save you time, money, and headaches before you invest a penny.
+            </p>
           </motion.div>
           <motion.div variants={fadeUp} className="mt-12">
-            <ButtonPrimary className="text-lg px-10 py-5">
+            <Link to="/contact" className="btn-primary text-lg px-10 py-5">
               Book My Free Audit
-            </ButtonPrimary>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
           </motion.div>
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap justify-center gap-8 text-secondary/60 text-sm">
             <span className="flex items-center gap-2">
@@ -813,7 +621,7 @@ const FinalCTA = () => {
             </span>
           </motion.div>
         </motion.div>
-      </Container>
+      </div>
     </section>
   );
 };
@@ -831,7 +639,7 @@ const Index = () => {
     <>
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-[#6e74af] transform origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary to-accent transform origin-left z-50"
         style={{ scaleX }}
       />
       
@@ -843,7 +651,7 @@ const Index = () => {
         <Process />
         <Testimonials />
         <FinalCTA />
-    </main>
+      </main>
     </>
   );
 };

@@ -11,6 +11,7 @@ export default {
         primary: '#f9dec9',        // headings, hero glow, card backgrounds (light)
         secondary: '#6e74af',      // body text, subtle accents
         ink: '#0B0B0F',            // text on light surfaces
+        accent: '#4CC9F0',         // accent color
         // accent gradient endpoints
         accentA: '#4CC9F0',
         accentB: '#A084E8',
@@ -53,6 +54,11 @@ export default {
       backgroundImage: {
         'accent-grad': 'linear-gradient(135deg, #4CC9F0 0%, #A084E8 100%)',
         'cream-grad': 'linear-gradient(180deg, rgba(249,222,201,0.15), rgba(249,222,201,0.02))',
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'glow-primary': 'radial-gradient(circle at center, rgba(249,222,201,0.4), transparent 70%)',
+        'glow-secondary': 'radial-gradient(circle at center, rgba(110,116,175,0.4), transparent 70%)',
+        'mesh-gradient': 'linear-gradient(45deg, #f9dec9 0%, #6e74af 25%, #4CC9F0 50%, #A084E8 75%, #f9dec9 100%)',
       },
       backdropBlur: { xs: '2px' },
       transitionTimingFunction: { 'out-smooth': 'cubic-bezier(0.16,1,0.3,1)' },
@@ -98,6 +104,10 @@ export default {
         "data-flow": {
           "0%": { strokeDashoffset: "1000" },
           "100%": { strokeDashoffset: "0" }
+        },
+        "scroll-x": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" }
         }
       },
       animation: {
@@ -111,7 +121,8 @@ export default {
         "morph": "morph 8s ease-in-out infinite",
         "stagger": "stagger 0.6s ease-out",
         "count-up": "count-up 0.8s ease-out",
-        "data-flow": "data-flow 3s ease-in-out infinite"
+        "data-flow": "data-flow 3s ease-in-out infinite",
+        'scroll-x': 'scroll-x 40s linear infinite',
       },
       transitionDuration: {
         "2000": "2000ms",
