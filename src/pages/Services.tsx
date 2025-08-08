@@ -68,6 +68,26 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Value props strip */}
+      <section className="py-6">
+        <div className="container-nc">
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="card-cream p-4 text-ink">
+              <div className="font-semibold">Quick wins baked in</div>
+              <p className="text-ink/80 text-sm mt-1">We ship improvements every 2 weeks. You see progress fast.</p>
+            </div>
+            <div className="card-cream p-4 text-ink">
+              <div className="font-semibold">Measured outcomes</div>
+              <p className="text-ink/80 text-sm mt-1">Simple dashboards show time saved and tasks automated.</p>
+            </div>
+            <div className="card-cream p-4 text-ink">
+              <div className="font-semibold">Adoption first</div>
+              <p className="text-ink/80 text-sm mt-1">We train your team and make sure the new way sticks.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Quick nav */}
       <section className="py-6">
         <div className="container-nc">
@@ -113,6 +133,60 @@ const Services = () => {
           </div>
         </section>
       ))}
+
+      {/* Results strip */}
+      <section className="py-20">
+        <div className="container-nc">
+          <div className="card-cream p-6">
+            <div className="grid md:grid-cols-3 gap-6 text-center">
+              <div>
+                <div className="h2 leading-none">50–90%</div>
+                <p className="text-secondary mt-1">Typical reduction in task time after automation</p>
+              </div>
+              <div>
+                <div className="h2 leading-none">24/7</div>
+                <p className="text-secondary mt-1">Coverage from AI agents on chat, voice and email</p>
+              </div>
+              <div>
+                <div className="h2 leading-none">Weeks</div>
+                <p className="text-secondary mt-1">Not months to deliver visible wins</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-24">
+        <div className="container-nc">
+          <div className="text-center mb-12">
+            <div className="eyebrow">FAQ</div>
+            <h2 className="h2">Straight answers to common questions</h2>
+            <p className="copy mt-4 max-w-3xl mx-auto">If you have a different question, just ask. We keep things simple.</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="card-cream p-6 text-ink">
+              <div className="font-semibold text-lg">How do we start?</div>
+              <p className="text-ink/80 mt-2">We run a short audit to spot quick wins, map the plan, and agree success measures. Then we build in small steps every 2 weeks.</p>
+            </div>
+            <div className="card-cream p-6 text-ink">
+              <div className="font-semibold text-lg">Will this work with our tools?</div>
+              <p className="text-ink/80 mt-2">Yes. We connect to CRMs, spreadsheets, email, phones, and more. If a connector does not exist, we build a simple bridge.</p>
+            </div>
+            <div className="card-cream p-6 text-ink">
+              <div className="font-semibold text-lg">How do you make sure people use it?</div>
+              <p className="text-ink/80 mt-2">We design around your team. Clear handovers. Short training. Simple documentation. We also refine after go live based on feedback.</p>
+            </div>
+            <div className="card-cream p-6 text-ink">
+              <div className="font-semibold text-lg">What does it cost?</div>
+              <p className="text-ink/80 mt-2">Projects scale to fit. We give a fixed price for the first 2 to 4 weeks so you can see value before committing further.</p>
+            </div>
+          </div>
+          <div className="text-center mt-10">
+            <Link to="/contact" className="btn-primary inline-flex items-center gap-2">Book a free audit <ArrowRight className="w-4 h-4" /></Link>
+          </div>
+        </div>
+      </section>
 
       {/* What you get with every project */}
       <section className="py-24">
