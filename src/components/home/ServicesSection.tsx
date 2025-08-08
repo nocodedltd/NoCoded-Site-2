@@ -42,13 +42,13 @@ export default function ServicesSection() {
             <motion.div 
               key={service.title} 
               variants={floatIn} 
-              className="card-cream p-8 hover:-translate-y-1 transition ease-out-smooth bg-primary/60 border-primary/50"
+              className="card-cream p-8 hover:-translate-y-1 transition ease-out-smooth text-center"
             >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-ink/5 text-ink">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-ink/5 text-ink mx-auto">
                 {service.icon}
               </div>
               <div className="text-ink font-semibold text-xl mb-2">{service.title}</div>
-              <p className="text-ink/80">{service.description}</p>
+              <p className="text-ink/80 mx-auto">{service.description}</p>
               <div className="mt-6">
                 <Link 
                   to="/services" 

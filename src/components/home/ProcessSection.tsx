@@ -45,13 +45,13 @@ export default function ProcessSection() {
               <motion.li 
                 key={step.title} 
                 variants={floatIn} 
-                className="card-cream p-8 text-ink bg-primary/60 border-primary/50"
+                className="card-cream p-8 text-ink text-center"
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-ink/5">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-ink/5 mx-auto">
                   {step.number}
                 </div>
                 <div className="font-semibold text-xl mb-2">{step.title}</div>
-                <p className="text-ink/80">{step.description}</p>
+                <p className="text-ink/80 mx-auto">{step.description}</p>
               </motion.li>
             ))}
           </motion.ol>
