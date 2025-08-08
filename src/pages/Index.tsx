@@ -531,7 +531,7 @@ const CoreServices = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={stagger(0.2)}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {services.map((service, index) => (
             <motion.div
@@ -541,7 +541,7 @@ const CoreServices = () => {
                 y: -8,
                 boxShadow: "0 20px 40px rgba(249, 222, 201, 0.2)"
               }}
-              className={`bg-primary text-ink rounded-3xl p-6 lg:p-8 border border-primary/70 shadow-lg hover:shadow-xl transition-all duration-300 ${
+              className={`rounded-3xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center bg-[rgba(249,222,201,0.45)] border border-[#f9dec9]/30 ${
                 service.flagship ? 'ring-2 ring-[#6e74af]/50' : ''
               }`}
             >
@@ -552,12 +552,12 @@ const CoreServices = () => {
                   </span>
                 </div>
               )}
-              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-ink/10 rounded-full flex items-center justify-center mb-4 lg:mb-6">
+              <div className="w-12 h-12 lg:w-16 lg:h-16 bg-ink/10 rounded-full flex items-center justify-center mb-4 lg:mb-6 mx-auto">
                 <service.icon className="w-6 h-6 lg:w-8 lg:h-8 text-ink" />
               </div>
               <h3 className="text-ink font-bold text-lg lg:text-xl mb-3 lg:mb-4">{service.title}</h3>
-              <p className="text-ink/80 leading-relaxed mb-4 lg:mb-6 text-sm lg:text-base">{service.description}</p>
-              <ButtonSecondary className="border-ink/20 text-ink hover:bg-ink/5 text-sm">
+              <p className="text-ink/80 leading-relaxed mb-4 lg:mb-6 text-sm lg:text-base mx-auto">{service.description}</p>
+              <ButtonSecondary className="border-ink/20 text-ink hover:bg-ink/5 text-sm mx-auto">
                 Learn More
               </ButtonSecondary>
             </motion.div>
@@ -843,7 +843,7 @@ const Index = () => {
         <Process />
         <Testimonials />
         <FinalCTA />
-      </main>
+    </main>
     </>
   );
 };
