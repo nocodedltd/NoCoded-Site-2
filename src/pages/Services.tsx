@@ -30,8 +30,8 @@ const Services = () => {
 
   return (
     <main className="overflow-hidden">
-      {/* Hero Section with polish */}
-      <section className="relative py-28">
+      {/* Hero Section with full-bleed gradient and lighting */}
+      <section className="relative py-32">
         <div className="container-nc text-center max-w-3xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="h1"
           >
-            Services built to remove busywork and unlock growth
+            Services that feel like magic, not admin
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -47,7 +47,7 @@ const Services = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="copy mt-4 text-primary/90"
           >
-            Choose one service or let us design a plan. Either way, we focus on quick wins, clear outcomes, and systems your team will actually use.
+            We cut repetitive work and replace it with reliable, automated systems. Quick wins first, then scale what works.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -62,9 +62,10 @@ const Services = () => {
           </motion.div>
         </div>
 
-        {/* subtle background accent */}
+        {/* background gradients & orbs */}
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-[28rem] h-[28rem] bg-primary/10 blur-[120px] rounded-full"></div>
+          <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-[36rem] h-[36rem] bg-primary/10 blur-[140px] rounded-full"></div>
+          <div className="absolute right-1/3 top-1/2 w-64 h-64 bg-[#6e74af]/20 blur-[100px] rounded-full"></div>
         </div>
       </section>
 
@@ -88,8 +89,8 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Quick nav */}
-      <section className="py-6">
+      {/* Sticky sub-nav */}
+      <section className="py-6 sticky top-16 z-20 bg-[#0B0B0F]/80 backdrop-blur">
         <div className="container-nc">
           <div className="card-cream p-4 overflow-x-auto">
             <div className="flex gap-3 whitespace-nowrap">
@@ -105,9 +106,15 @@ const Services = () => {
 
       {/* Alternating service bands with imagery */}
       {services.map((s, i) => (
-        <section id={s.slug} key={s.slug} className="py-20">
+        <section id={s.slug} key={s.slug} className="py-24">
           <div className="container-nc grid lg:grid-cols-2 gap-10 items-center">
-            <div className={`${i % 2 === 1 ? 'lg:order-2' : ''}`}>
+            <motion.div 
+              initial={{ opacity: 0, y: 24 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ duration: 0.6 }}
+              className={`${i % 2 === 1 ? 'lg:order-2' : ''}`}
+            >
               <div className="eyebrow mb-3">{s.flagship ? 'Flagship Programme' : 'Service'}</div>
               <h3 className="h2 mb-4">{s.title}</h3>
               <p className="copy text-primary/90 mb-6">{s.oneLiner}</p>
@@ -123,13 +130,19 @@ const Services = () => {
                 <Link to="/contact" className="btn-primary">Talk to us</Link>
                 <a href="#top" className="btn-secondary">Back to top</a>
               </div>
-            </div>
-            <div className={`${i % 2 === 1 ? 'lg:order-1' : ''}`}>
-              <div className="relative rounded-3xl overflow-hidden">
-                <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 24 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className={`${i % 2 === 1 ? 'lg:order-1' : ''}`}
+            >
+              <div className="relative rounded-3xl overflow-hidden group">
+                <img src={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent" />
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
       ))}

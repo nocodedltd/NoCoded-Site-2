@@ -21,12 +21,12 @@ export const SERVICES: ServiceItem[] = [
     slug: "90-day-ai-transformation",
     title: "90-Day AI Transformation",
     oneLiner:
-      "A simple, done-with-you programme that fixes slow, manual work and replaces it with faster, automated systems in one quarter.",
+      "A focused programme that replaces slow, manual work with simple, automated systems in one quarter.",
     bullets: [
-      "Clear plan in your first week with what we’ll build and why",
-      "Real improvements delivered every 2 weeks",
-      "Your team trained so the changes actually stick",
-      "We keep tuning until it runs smoothly",
+      "Clear plan in week one: what we’ll build and why",
+      "Visible improvements shipped every 2 weeks",
+      "Team trained and supported so changes stick",
+      "We keep tuning until everything runs smoothly",
     ],
     icon: Calendar,
     image: teamMeetingImg,
@@ -36,11 +36,11 @@ export const SERVICES: ServiceItem[] = [
     slug: "ai-agents",
     title: "AI Agents",
     oneLiner:
-      "Always-on helpers that answer questions, follow up with leads, and complete routine work so your team can focus on growth.",
+      "Digital helpers that answer questions, qualify leads and follow up so you never miss an opportunity.",
     bullets: [
-      "Handles chat, voice and email 24/7",
-      "Learns your business language and process",
-      "Takes action, not just Q&A (bookings, updates, lookups)",
+      "Covers chat, voice and email 24/7",
+      "Understands your tone and process",
+      "Takes action: bookings, updates, lookups",
       "Connects to the tools you already use",
     ],
     icon: Bot,
@@ -50,7 +50,7 @@ export const SERVICES: ServiceItem[] = [
     slug: "process-automation",
     title: "Intelligent Process Automation",
     oneLiner:
-      "We remove manual steps in your workflows so tasks finish faster, with fewer mistakes, and at lower cost.",
+      "We remove repetitive steps so tasks finish faster with fewer mistakes and lower cost.",
     bullets: [
       "Cut task time by up to 50–90%",
       "Reduce errors and rework",
@@ -64,12 +64,12 @@ export const SERVICES: ServiceItem[] = [
     slug: "bespoke-ai",
     title: "Bespoke AI Solutions",
     oneLiner:
-      "Custom-built AI that solves a specific problem in your business — from smarter reporting to forecasting and decision support.",
+      "Custom AI to solve a specific business problem — reporting, forecasting or decision support.",
     bullets: [
-      "Made for your data and workflow",
-      "Own the IP and keep a competitive edge",
+      "Tailored to your data and workflow",
+      "Own the IP for a lasting edge",
       "Built in small, testable steps",
-      "Long-term support available",
+      "Optional long‑term support",
     ],
     icon: Zap,
     image: aiTransformationImg,
