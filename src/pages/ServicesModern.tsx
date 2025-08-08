@@ -88,6 +88,7 @@ export default function ServicesModern() {
               <div className="eyebrow mb-3">{s.flagship ? 'Flagship Programme' : 'Service'}</div>
               <h3 className="h2 mb-4">{s.title}</h3>
               <p className="copy text-primary/90 mb-6">{s.oneLiner}</p>
+              <div className="text-secondary/70 mb-2">What you’ll get</div>
               <ul className="space-y-3">
                 {s.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-3 text-primary/85">
@@ -98,7 +99,6 @@ export default function ServicesModern() {
               </ul>
               <div className="mt-8 flex gap-3">
                 <Link to="/contact" className="btn-primary">Talk to us</Link>
-                <a href="#top" className="btn-secondary">Back to top</a>
               </div>
             </motion.div>
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className={`${i % 2 === 1 ? 'lg:order-1' : ''}`}>

@@ -21,12 +21,12 @@ export const SERVICES: ServiceItem[] = [
     slug: "90-day-ai-transformation",
     title: "90-Day AI Transformation",
     oneLiner:
-      "A focused programme that replaces slow, manual work with simple, automated systems in one quarter.",
+      "A focused programme that removes bottlenecks and replaces manual work with automated, reliable systems in one quarter.",
     bullets: [
-      "Clear plan in week one: what we’ll build and why",
-      "Visible improvements shipped every 2 weeks",
-      "Team trained and supported so changes stick",
-      "We keep tuning until everything runs smoothly",
+      "Week‑one blueprint with milestones and outcomes",
+      "Every 2 weeks, something shipped you can use",
+      "Training, handover and simple documentation",
+      "Refinement after go‑live based on real usage",
     ],
     icon: Calendar,
     image: teamMeetingImg,
@@ -38,7 +38,7 @@ export const SERVICES: ServiceItem[] = [
     oneLiner:
       "Digital helpers that answer questions, qualify leads and follow up so you never miss an opportunity.",
     bullets: [
-      "Covers chat, voice and email 24/7",
+      "Chat, voice and email coverage 24/7",
       "Understands your tone and process",
       "Takes action: bookings, updates, lookups",
       "Connects to the tools you already use",
@@ -50,12 +50,12 @@ export const SERVICES: ServiceItem[] = [
     slug: "process-automation",
     title: "Intelligent Process Automation",
     oneLiner:
-      "We remove repetitive steps so tasks finish faster with fewer mistakes and lower cost.",
+      "We remove repetitive steps so tasks finish faster, with fewer mistakes and lower cost.",
     bullets: [
-      "Cut task time by up to 50–90%",
-      "Reduce errors and rework",
-      "See progress with simple dashboards",
-      "Works across your CRM, spreadsheets and docs",
+      "Cut task time by 50–90%",
+      "Fewer errors and less rework",
+      "Simple dashboards for visibility",
+      "Works across your CRM, sheets and docs",
     ],
     icon: Cog,
     image: processAutomationImg,
