@@ -23,7 +23,7 @@ export default function ServicesSection() {
 
   return (
     <section className="py-24">
-      <div className="container-nc">
+      <div className="container-nc max-w-[1400px]">
         <div className="text-center mb-12">
           <div className="eyebrow">Our Core Services</div>
           <h2 className="h2">Three Ways We Supercharge Your Business</h2>
@@ -36,13 +36,13 @@ export default function ServicesSection() {
           variants={stagger(0.18)} 
           initial="hidden" 
           whileInView="show" 
-          className="grid md:grid-cols-3 gap-6"
+          className="grid md:grid-cols-3 gap-8"
         >
           {services.map((service) => (
             <motion.div 
               key={service.title} 
               variants={floatIn} 
-              className="card-cream p-6 hover:-translate-y-1 transition ease-out-smooth"
+              className="card-cream p-8 hover:-translate-y-1 transition ease-out-smooth bg-primary/60 border-primary/50"
             >
               <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-ink/5 text-ink">
                 {service.icon}

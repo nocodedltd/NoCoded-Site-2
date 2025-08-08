@@ -25,7 +25,7 @@
     @apply relative rounded-3xl bg-base/60 backdrop-blur-sm border border-white/5 shadow-card;
   }
   .card-cream {
-    @apply relative rounded-3xl bg-primary text-ink border border-primary/70 shadow-glow;
+    @apply relative rounded-3xl bg-primary/70 text-ink border border-primary/60 shadow-glow;
   }
 
   .divider-flow {

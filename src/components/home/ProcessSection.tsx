@@ -39,13 +39,13 @@ export default function ProcessSection() {
             variants={stagger()} 
             initial="hidden" 
             whileInView="show" 
-            className="grid md:grid-cols-3 gap-6 relative"
+            className="grid md:grid-cols-3 gap-8 relative"
           >
             {steps.map((step) => (
               <motion.li 
                 key={step.title} 
                 variants={floatIn} 
-                className="card-cream p-6 text-ink"
+                className="card-cream p-8 text-ink bg-primary/60 border-primary/50"
               >
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-ink/5">
                   {step.number}
