@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container-nc { @apply mx-auto max-w-content px-4 sm:px-6 lg:px-8; }
+  .h1 { @apply font-display text-primary tracking-wide font-extrabold leading-tight text-5xl sm:text-6xl md:text-7xl; }
+  .h2 { @apply font-display text-primary font-bold leading-tight text-3xl sm:text-4xl md:text-5xl; }
+  .eyebrow { @apply inline-flex items-center gap-2 text-secondary text-sm uppercase tracking-widest; }
+  .copy { @apply text-secondary/90 text-base md:text-lg leading-relaxed; }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 
+           text-ink font-semibold shadow-card transition-transform ease-out-smooth
+           bg-accent-grad hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 
+           focus-visible:ring-primary/60;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 
+           text-primary border border-primary/40 hover:border-primary/80
+           bg-transparent hover:bg-primary/5 transition ease-out-smooth;
+  }
+
+  .card-dark {
+    @apply relative rounded-3xl bg-base/60 backdrop-blur-sm border border-white/5 shadow-card;
+  }
+  .card-cream {
+    @apply relative rounded-3xl bg-primary text-ink border border-primary/70 shadow-glow;
+  }
+
+  .divider-flow {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent;
+  }
+}
+
