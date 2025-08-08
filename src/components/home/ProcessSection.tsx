@@ -51,7 +51,7 @@ export default function ProcessSection() {
                   {step.number}
                 </div>
                 <div className="font-semibold text-xl mb-2">{step.title}</div>
-                <p className="text-ink/80 mx-auto max-w-[26rem]">{step.description}</p>
+                <p className="text-ink mx-auto max-w-[26rem]">{step.description}</p>
               </motion.li>
             ))}
           </motion.ol>

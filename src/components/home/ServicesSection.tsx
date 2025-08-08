@@ -48,7 +48,7 @@ export default function ServicesSection() {
                 {service.icon}
               </div>
               <div className="text-ink font-semibold text-xl mb-2">{service.title}</div>
-              <p className="text-ink/80 mx-auto">{service.description}</p>
+              <p className="text-ink mx-auto">{service.description}</p>
               <div className="mt-6">
                 <Link 
                   to="/services" 

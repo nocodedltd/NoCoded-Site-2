@@ -48,7 +48,7 @@ export default function FeatureCard({
         </div>
         
         <h3 className="text-primary font-bold text-xl mb-4">{title}</h3>
-        <p className="text-secondary/80 leading-relaxed flex-1">{description}</p>
+        <p className="text-primary/90 leading-relaxed flex-1">{description}</p>
         
         {/* Hover glow effect */}
         <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">

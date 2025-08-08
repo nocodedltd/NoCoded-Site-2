@@ -174,9 +174,9 @@ const ImpactCalculator = () => {
               </div>
             </div>
             
-            <div className="space-y-6">
-              <div>
-                <label className="block text-secondary text-sm font-medium mb-2">Team Size</label>
+                          <div className="space-y-6">
+                <div>
+                  <label className="block text-primary text-sm font-medium mb-2">Team Size</label>
                 <input
                   type="number"
                   min="1"
@@ -186,10 +186,10 @@ const ImpactCalculator = () => {
                 />
               </div>
               
-              <div>
-                <label className="block text-secondary text-sm font-medium mb-2">
-                  {calculationType === 'time' ? 'Hours per Employee per Week on Repetitive Tasks' : 'Average Hourly Wage (£)'}
-                </label>
+                              <div>
+                  <label className="block text-primary text-sm font-medium mb-2">
+                    {calculationType === 'time' ? 'Hours per Employee per Week on Repetitive Tasks' : 'Average Hourly Wage (£)'}
+                  </label>
                 <input
                   type="number"
                   min="0"
@@ -206,10 +206,10 @@ const ImpactCalculator = () => {
               </div>
               
               {calculationType === 'time' && (
-                <div>
-                  <label className="block text-secondary text-sm font-medium mb-2">
-                    Automation Percentage: {automationPercent}%
-                  </label>
+                                  <div>
+                    <label className="block text-primary text-sm font-medium mb-2">
+                      Automation Percentage: {automationPercent}%
+                    </label>
                   <input
                     type="range"
                     min="0"
@@ -235,13 +235,13 @@ const ImpactCalculator = () => {
               
               <div className="space-y-6">
                 <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6">
-                  <div className="text-secondary text-sm mb-2">
+                  <div className="text-primary text-sm mb-2">
                     {calculationType === 'time' ? 'Hours Saved Annually' : 'Cost Saved Annually'}
                   </div>
                   <div className="text-primary text-5xl font-extrabold">
                     {calculationType === 'time' ? `${displayValue} weeks` : `£${displayValue.toLocaleString()}`}
                   </div>
-                  <div className="text-secondary text-sm mt-2">
+                  <div className="text-primary text-sm mt-2">
                     {calculationType === 'time' 
                       ? `That's ${savedDays} working days per year`
                       : `That's £${Math.round(savedCost / 12).toLocaleString()} per month`
@@ -536,8 +536,8 @@ const Testimonials = () => {
                 </blockquote>
                 
                 <div className="mt-auto">
-                  <div className="text-secondary font-semibold text-lg">{testimonial.author}</div>
-                  <div className="text-secondary/60 text-sm">{testimonial.company}</div>
+                  <div className="text-primary font-semibold text-lg">{testimonial.author}</div>
+                  <div className="text-primary/70 text-sm">{testimonial.company}</div>
                 </div>
               </div>
             </motion.div>
@@ -606,7 +606,7 @@ const FinalCTA = () => {
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>
-          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap justify-center gap-8 text-secondary/60 text-sm">
+          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap justify-center gap-8 text-primary/80 text-sm">
             <span className="flex items-center gap-2">
               <CheckCircle className="w-4 h-4" />
               No commitment required

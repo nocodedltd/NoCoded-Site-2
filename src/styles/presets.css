@@ -7,7 +7,7 @@
   .h1 { @apply font-display text-primary tracking-wide font-extrabold leading-tight text-5xl sm:text-6xl md:text-7xl; }
   .h2 { @apply font-display text-primary font-bold leading-tight text-3xl sm:text-4xl md:text-5xl; }
   .eyebrow { @apply inline-flex items-center gap-2 text-secondary text-sm uppercase tracking-widest; }
-  .copy { @apply text-secondary/90 text-base md:text-lg leading-relaxed; }
+  .copy { @apply text-primary text-base md:text-lg leading-relaxed; }
 
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 
