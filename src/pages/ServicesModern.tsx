@@ -15,7 +15,7 @@ export default function ServicesModern() {
           <motion.h1 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className="h1">
             Build faster. Automate the boring. Grow with no‑code.
           </motion.h1>
-          <motion.p variants={fadeUp} className="copy mt-4 text-primary/90">
+          <motion.p variants={fadeUp} className="copy mt-4 text-primary">
             We design modern systems that remove busywork and unlock growth. Quick wins in weeks, not months.
           </motion.p>
           <motion.div variants={fadeUp} className="mt-8">
@@ -62,8 +62,8 @@ export default function ServicesModern() {
                   <s.icon className="w-5 h-5" />
                 </div>
                 <div className="font-semibold text-xl text-primary mb-2">{s.title}</div>
-                <p className="text-secondary/90 mb-4">{s.oneLiner}</p>
-                <ul className="space-y-2 text-secondary/80">
+                <p className="text-primary mb-4">{s.oneLiner}</p>
+                <ul className="space-y-2 text-primary/90">
                   {s.bullets.slice(0, 3).map((b) => (
                     <li key={b} className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-primary mt-1" />
@@ -87,11 +87,11 @@ export default function ServicesModern() {
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} className={`${i % 2 === 1 ? 'lg:order-2' : ''}`}>
               <div className="eyebrow mb-3">{s.flagship ? 'Flagship Programme' : 'Service'}</div>
               <h3 className="h2 mb-4">{s.title}</h3>
-              <p className="copy text-primary/90 mb-6">{s.oneLiner}</p>
-              <div className="text-secondary/70 mb-2">What you’ll get</div>
+                              <p className="copy text-primary mb-6">{s.oneLiner}</p>
+                <div className="text-primary/80 mb-2">What you'll get</div>
               <ul className="space-y-3">
                 {s.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-primary/85">
+                  <li key={b} className="flex items-start gap-3 text-primary">
                     <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
                     <span className="leading-relaxed">{b}</span>
                   </li>
@@ -121,10 +121,10 @@ export default function ServicesModern() {
           <div className="grid md:grid-cols-3 gap-6">
             {[{b:'Staff copy/paste between tools',a:'Auto-sync in the background'}, {b:'Leads wait hours',a:'Instant replies and booked calls'}, {b:'Weekly reporting eats a day',a:'Dashboards update themselves'}].map((r)=> (
               <div key={r.b} className="relative rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-                <div className="text-secondary/70 text-sm">Before</div>
+                <div className="text-primary/80 text-sm">Before</div>
                 <div className="font-semibold text-lg text-primary">{r.b}</div>
                 <div className="divider-flow my-4" />
-                <div className="text-secondary/70 text-sm">After</div>
+                <div className="text-primary/80 text-sm">After</div>
                 <div className="font-semibold text-lg text-primary">{r.a}</div>
               </div>
             ))}
@@ -140,7 +140,7 @@ export default function ServicesModern() {
           <p className="copy mt-4 max-w-2xl mx-auto">We use established no‑code platforms that integrate cleanly. If a connector is missing, we create a lightweight bridge.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mt-8">
             {["Make","Zapier","Airtable","Notion","HubSpot","Slack","Google","Retool","Bubble","Glide","Webflow","Twilio"].map((t)=> (
-              <div key={t} className="rounded-2xl border border-white/10 bg-white/5 py-3 text-secondary/90 hover:bg-white/10 transition">{t}</div>
+              <div key={t} className="rounded-2xl border border-white/10 bg-white/5 py-3 text-primary hover:bg-white/10 transition">{t}</div>
             ))}
           </div>
         </div>
@@ -150,7 +150,7 @@ export default function ServicesModern() {
       <section className="relative py-28">
         <div className="container-nc text-center max-w-3xl mx-auto">
           <h2 className="h2">Ready to move faster?</h2>
-          <p className="copy mt-4 text-primary/90">Book a free 30‑minute audit. We’ll show you where automation saves time and money before you invest.</p>
+          <p className="copy mt-4 text-primary">Book a free 30‑minute audit. We'll show you where automation saves time and money before you invest.</p>
           <div className="mt-8">
             <Link to="/contact" className="btn-primary">Book My Free Audit</Link>
           </div>
