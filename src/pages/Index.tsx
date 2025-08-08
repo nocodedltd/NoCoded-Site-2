@@ -76,7 +76,7 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-8"
         >
-          <p className="copy mx-auto max-w-3xl">
+          <p className="text-primary text-base md:text-lg leading-relaxed mx-auto max-w-3xl">
             We help UK businesses cut out repetitive work, boost productivity, and create seamless customer experiences so you can focus on growth, not admin.
           </p>
         </motion.div>
