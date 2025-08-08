@@ -45,7 +45,7 @@ const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="copy mt-4"
+            className="copy mt-4 text-primary/90"
           >
             Choose one service or let us design a plan. Either way, we focus on quick wins, clear outcomes, and systems your team will actually use.
           </motion.p>
@@ -110,10 +110,10 @@ const Services = () => {
             <div className={`${i % 2 === 1 ? 'lg:order-2' : ''}`}>
               <div className="eyebrow mb-3">{s.flagship ? 'Flagship Programme' : 'Service'}</div>
               <h3 className="h2 mb-4">{s.title}</h3>
-              <p className="copy mb-6">{s.oneLiner}</p>
+              <p className="copy text-primary/90 mb-6">{s.oneLiner}</p>
               <ul className="space-y-3">
                 {s.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-secondary">
+                  <li key={b} className="flex items-start gap-3 text-primary/85">
                     <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
                     <span className="leading-relaxed">{b}</span>
                   </li>
@@ -141,15 +141,15 @@ const Services = () => {
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div>
                 <div className="h2 leading-none">50–90%</div>
-                <p className="text-secondary mt-1">Typical reduction in task time after automation</p>
+                <p className="text-primary/75 mt-1">Typical reduction in task time after automation</p>
               </div>
               <div>
                 <div className="h2 leading-none">24/7</div>
-                <p className="text-secondary mt-1">Coverage from AI agents on chat, voice and email</p>
+                <p className="text-primary/75 mt-1">Coverage from AI agents on chat, voice and email</p>
               </div>
               <div>
                 <div className="h2 leading-none">Weeks</div>
-                <p className="text-secondary mt-1">Not months to deliver visible wins</p>
+                <p className="text-primary/75 mt-1">Not months to deliver visible wins</p>
               </div>
             </div>
           </div>
