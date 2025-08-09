@@ -53,7 +53,7 @@ export default function Section({
             
             {description && (
               <motion.div variants={fadeUp} className="mt-6">
-                <p className="copy mx-auto max-w-3xl">{description}</p>
+                <p className="text-primary text-base md:text-lg leading-relaxed mx-auto max-w-3xl">{description}</p>
               </motion.div>
             )}
           </motion.div>

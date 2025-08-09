@@ -596,7 +596,7 @@ const FinalCTA = () => {
             <h2 className="h2">Ready to See What's Possible?</h2>
           </motion.div>
           <motion.div variants={fadeUp} className="mt-6">
-            <p className="copy mx-auto max-w-2xl">
+            <p className="text-primary text-base md:text-lg leading-relaxed mx-auto max-w-2xl">
               Book your free 30‑minute audit. We'll show you exactly where automation can save you time, money, and headaches before you invest a penny.
             </p>
           </motion.div>
@@ -651,7 +651,7 @@ const Index = () => {
         <Process />
         <Testimonials />
         <FinalCTA />
-      </main>
+    </main>
     </>
   );
 };
