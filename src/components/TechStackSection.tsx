@@ -1,217 +1,73 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/motionVariants";
 
-// Simple SVG icon components for reliable display
-const IconComponents = {
-  HubSpot: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-orange-500">
-      <circle cx="12" cy="12" r="10" fill="#ff7a59"/>
-      <circle cx="12" cy="8" r="2" fill="white"/>
-      <circle cx="12" cy="16" r="1" fill="white"/>
-    </svg>
-  ),
-  Salesforce: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-blue-500">
-      <circle cx="8" cy="8" r="3" fill="#1B96FF"/>
-      <circle cx="16" cy="10" r="2" fill="#1B96FF"/>
-      <circle cx="12" cy="16" r="2.5" fill="#1B96FF"/>
-    </svg>
-  ),
-  Shopify: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-green-500">
-      <path d="M16 6L12 2L8 6V18L12 22L16 18V6Z" fill="#95BF46"/>
-    </svg>
-  ),
-  Stripe: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-purple-500">
-      <path d="M4 12H20" stroke="#6772E5" strokeWidth="2"/>
-      <path d="M4 8H20" stroke="#6772E5" strokeWidth="2"/>
-      <path d="M4 16H20" stroke="#6772E5" strokeWidth="2"/>
-    </svg>
-  ),
-  PayPal: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-blue-600">
-      <path d="M8 4H16C18 4 20 6 20 8S18 12 16 12H12L10 20H6L8 4Z" fill="#0070BA"/>
-    </svg>
-  ),
-  WordPress: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-blue-700">
-      <circle cx="12" cy="12" r="10" fill="#21759B"/>
-      <circle cx="12" cy="12" r="6" fill="white"/>
-      <circle cx="12" cy="12" r="2" fill="#21759B"/>
-    </svg>
-  ),
-  Gmail: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-red-500">
-      <path d="M4 20V8L12 14L20 8V20H4Z" fill="#EA4335"/>
-      <path d="M4 8L12 14L20 8L12 4L4 8Z" fill="#FBBC05"/>
-    </svg>
-  ),
-  Slack: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-purple-500">
-      <rect x="6" y="6" width="4" height="4" rx="2" fill="#4A154B"/>
-      <rect x="14" y="6" width="4" height="4" rx="2" fill="#4A154B"/>
-      <rect x="6" y="14" width="4" height="4" rx="2" fill="#4A154B"/>
-      <rect x="14" y="14" width="4" height="4" rx="2" fill="#4A154B"/>
-    </svg>
-  ),
-  Zoom: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-blue-500">
-      <circle cx="12" cy="12" r="10" fill="#2D8CFF"/>
-      <path d="M8 10H16V14H8Z" fill="white"/>
-    </svg>
-  ),
-  Notion: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-gray-800">
-      <rect x="4" y="4" width="16" height="16" rx="2" fill="black"/>
-      <path d="M8 8H16M8 12H16M8 16H12" stroke="white" strokeWidth="1.5"/>
-    </svg>
-  ),
-  Facebook: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-blue-600">
-      <circle cx="12" cy="12" r="10" fill="#1877F2"/>
-      <path d="M16 8H14C13 8 12 9 12 10V12H10V14H12V20H14V14H16L16.5 12H14V10.5C14 10.2 14.2 10 14.5 10H16V8Z" fill="white"/>
-    </svg>
-  ),
-  Instagram: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-pink-500">
-      <rect x="4" y="4" width="16" height="16" rx="4" fill="url(#instagram-gradient)"/>
-      <circle cx="12" cy="12" r="4" fill="none" stroke="white" strokeWidth="2"/>
-      <circle cx="17" cy="7" r="1" fill="white"/>
-      <defs>
-        <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#E4405F"/>
-          <stop offset="100%" stopColor="#FCCC63"/>
-        </linearGradient>
-      </defs>
-    </svg>
-  ),
-  LinkedIn: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-blue-700">
-      <rect x="4" y="4" width="16" height="16" rx="2" fill="#0A66C2"/>
-      <rect x="7" y="10" width="2" height="6" fill="white"/>
-      <circle cx="8" cy="8" r="1" fill="white"/>
-      <path d="M13 10V16H15V13C15 12 15.5 11 17 11S19 12 19 13V16H17V10H15" fill="white"/>
-    </svg>
-  ),
-  YouTube: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-red-600">
-      <rect x="4" y="8" width="16" height="8" rx="2" fill="#FF0000"/>
-      <polygon points="10,10 10,14 14,12" fill="white"/>
-    </svg>
-  ),
-  GitHub: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-gray-900">
-      <circle cx="12" cy="12" r="10" fill="#24292e"/>
-      <path d="M12 6C9 6 7 8 7 10.5C7 13 9 14 12 14S17 13 17 10.5C17 8 15 6 12 6Z" fill="white"/>
-    </svg>
-  ),
-  Default: ({ category }: { category: string }) => {
-    const iconMap: Record<string, any> = {
-      'CRM': '👥',
-      'E-commerce': '🛒',
-      'Payments': '💳',
-      'CMS': '📄',
-      'Website': '🌐',
-      'Email': '📧',
-      'Email Marketing': '📬',
-      'Social': '📱',
-      'Video': '🎥',
-      'Marketing': '📈',
-      'Design': '🎨',
-      'Forms': '📝',
-      'Scheduling': '📅',
-      'Communication': '💬',
-      'Analytics': '📊',
-      'Database': '🗄️',
-      'Storage': '☁️',
-      'Cloud': '☁️',
-      'Spreadsheet': '📊',
-      'Documents': '📄',
-      'Presentations': '📊',
-      'Project Management': '📋',
-      'Automation': '⚡',
-      'AI': '🤖',
-      'Support': '🎧',
-      'Accounting': '💰',
-      'Development': '💻',
-    };
-    
-    return (
-      <div className="text-2xl">
-        {iconMap[category] || '⚙️'}
-      </div>
-    );
-  }
-};
-
-// Curated tech stack with icons and fallbacks
+// Platform data with actual logo URLs from reliable CDN
 const techStacks = [
   // Row 1 - Core Business Platforms (20 items)
-  { name: "HubSpot", icon: "HubSpot", category: "CRM" },
-  { name: "Salesforce", icon: "Salesforce", category: "CRM" },
-  { name: "Shopify", icon: "Shopify", category: "E-commerce" },
-  { name: "Stripe", icon: "Stripe", category: "Payments" },
-  { name: "PayPal", icon: "PayPal", category: "Payments" },
-  { name: "WordPress", icon: "WordPress", category: "CMS" },
-  { name: "Webflow", icon: "Default", category: "Website" },
-  { name: "Gmail", icon: "Gmail", category: "Email" },
-  { name: "Outlook", icon: "Default", category: "Email" },
-  { name: "MailChimp", icon: "Default", category: "Email Marketing" },
-  { name: "Zapier", icon: "Default", category: "Automation" },
-  { name: "Slack", icon: "Slack", category: "Communication" },
-  { name: "Zoom", icon: "Zoom", category: "Video" },
-  { name: "Google Drive", icon: "Default", category: "Storage" },
-  { name: "Dropbox", icon: "Default", category: "Storage" },
-  { name: "Notion", icon: "Notion", category: "Productivity" },
-  { name: "Airtable", icon: "Default", category: "Database" },
-  { name: "Asana", icon: "Default", category: "Project Management" },
-  { name: "Trello", icon: "Default", category: "Project Management" },
-  { name: "Monday", icon: "Default", category: "Project Management" },
+  { name: "HubSpot", logo: "https://www.hubspot.com/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png" },
+  { name: "Salesforce", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" },
+  { name: "Shopify", logo: "https://cdn.shopify.com/s/files/1/0446/6937/files/jjwxd8gqqzqkt8mj4n0k.png" },
+  { name: "Stripe", logo: "https://images.ctfassets.net/fzn2n1nzq965/3AGidihOJl4nH9D73ShM9j/c28eb5a89bdc5a8a0b8f5c3b66fedddc/stripe-logo-512x384.png" },
+  { name: "PayPal", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" },
+  { name: "WordPress", logo: "https://s.w.org/style/images/about/WordPress-logotype-wmark.png" },
+  { name: "Webflow", logo: "https://cdn.worldvectorlogo.com/logos/webflow.svg" },
+  { name: "Gmail", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" },
+  { name: "Outlook", logo: "https://upload.wikimedia.org/wikipedia/commons/d/df/Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg" },
+  { name: "MailChimp", logo: "https://eep.io/images/yzco4xsimv0y/1DktbiBpSqO8WyuIAeCayO/f0b848b1b0c3ae45bb6d54e3dd729b5f/MC_MonkeyRewards_Icon_App-Symbol_VRT.png" },
+  { name: "Zapier", logo: "https://cdn.zapier.com/storage/developer/7e5b33b1dd63a3c5b8bf87893b4b6d5a.png" },
+  { name: "Slack", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" },
+  { name: "Zoom", logo: "https://d24cgw3uvb9a9h.cloudfront.net/static/93516/image/new/ZoomLogo_112x112.png" },
+  { name: "Google Drive", logo: "https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" },
+  { name: "Dropbox", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Dropbox_logo_2017.svg" },
+  { name: "Notion", logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" },
+  { name: "Airtable", logo: "https://static.airtable.com/images/logomarks/logomark.png" },
+  { name: "Asana", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Asana_logo.svg" },
+  { name: "Trello", logo: "https://upload.wikimedia.org/wikipedia/en/8/8c/Trello_logo.svg" },
+  { name: "Monday", logo: "https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/remote_mondaycom_static/img/monday-logo-x2.png" },
 
   // Row 2 - Social & Marketing (20 items)
-  { name: "Facebook", icon: "Facebook", category: "Social" },
-  { name: "Instagram", icon: "Instagram", category: "Social" },
-  { name: "LinkedIn", icon: "LinkedIn", category: "Social" },
-  { name: "Twitter", icon: "Default", category: "Social" },
-  { name: "YouTube", icon: "YouTube", category: "Video" },
-  { name: "Google Ads", icon: "Default", category: "Marketing" },
-  { name: "Canva", icon: "Default", category: "Design" },
-  { name: "Adobe", icon: "Default", category: "Design" },
-  { name: "Figma", icon: "Default", category: "Design" },
-  { name: "Buffer", icon: "Default", category: "Social" },
-  { name: "Hootsuite", icon: "Default", category: "Social" },
-  { name: "Typeform", icon: "Default", category: "Forms" },
-  { name: "Calendly", icon: "Default", category: "Scheduling" },
-  { name: "Loom", icon: "Default", category: "Video" },
-  { name: "Discord", icon: "Default", category: "Communication" },
-  { name: "Microsoft Teams", icon: "Default", category: "Communication" },
-  { name: "Twilio", icon: "Default", category: "Communications" },
-  { name: "SendGrid", icon: "Default", category: "Email" },
-  { name: "ConvertKit", icon: "Default", category: "Email Marketing" },
-  { name: "ActiveCampaign", icon: "Default", category: "Email Marketing" },
+  { name: "Facebook", logo: "https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" },
+  { name: "Instagram", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" },
+  { name: "LinkedIn", logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" },
+  { name: "Twitter", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" },
+  { name: "YouTube", logo: "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" },
+  { name: "Google Ads", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" },
+  { name: "Canva", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg" },
+  { name: "Adobe", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Adobe_Corporate_Logo.svg" },
+  { name: "Figma", logo: "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" },
+  { name: "Buffer", logo: "https://buffer.com/static/misc/images/buffer-logo-256x256.png" },
+  { name: "Hootsuite", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Hootsuite_Logo.svg" },
+  { name: "Typeform", logo: "https://images.typeform.com/images/2dpnUBBkz2VN" },
+  { name: "Calendly", logo: "https://assets.calendly.com/assets/frontend/media/calendly-logo-square-cd36a7a9f9e4122db73b4f8b6c15d24bb9c91e31b4bc1fb5c0c86a1a7b5e1068.png" },
+  { name: "Loom", logo: "https://cdn.loom.com/assets/img/desktop-app/loom-studio-icon-192x192.png" },
+  { name: "Discord", logo: "https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a69f118df70ad7828d4_icon_clyde_blurple_RGB.svg" },
+  { name: "Microsoft Teams", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg" },
+  { name: "Twilio", logo: "https://www.twilio.com/content/dam/twilio-com/global/en/blog/legacy/2016/Twilio-Mark-Red.png" },
+  { name: "SendGrid", logo: "https://sendgrid.com/wp-content/themes/sgdotcom/pages/resource/brand/2016/SendGrid-Logomark.png" },
+  { name: "ConvertKit", logo: "https://convertkit-uploads2.s3.amazonaws.com/assets/pictures/90/67581/content_ck-favicon-228x228.png" },
+  { name: "ActiveCampaign", logo: "https://www.activecampaign.com/wp-content/uploads/2020/09/ac-favicon-32x32.png" },
 
   // Row 3 - Analytics & Enterprise (20 items)
-  { name: "Google Analytics", icon: "Default", category: "Analytics" },
-  { name: "Tableau", icon: "Default", category: "Analytics" },
-  { name: "Power BI", icon: "Default", category: "Analytics" },
-  { name: "AWS", icon: "Default", category: "Cloud" },
-  { name: "Google Cloud", icon: "Default", category: "Cloud" },
-  { name: "Microsoft Azure", icon: "Default", category: "Cloud" },
-  { name: "GitHub", icon: "GitHub", category: "Development" },
-  { name: "GitLab", icon: "Default", category: "Development" },
-  { name: "Zendesk", icon: "Default", category: "Support" },
-  { name: "Intercom", icon: "Default", category: "Support" },
-  { name: "QuickBooks", icon: "Default", category: "Accounting" },
-  { name: "Xero", icon: "Default", category: "Accounting" },
-  { name: "Excel", icon: "Default", category: "Spreadsheet" },
-  { name: "Word", icon: "Default", category: "Documents" },
-  { name: "PowerPoint", icon: "Default", category: "Presentations" },
-  { name: "OneDrive", icon: "Default", category: "Storage" },
-  { name: "Jira", icon: "Default", category: "Project Management" },
-  { name: "ClickUp", icon: "Default", category: "Project Management" },
-  { name: "Make", icon: "Default", category: "Automation" },
-  { name: "OpenAI", icon: "Default", category: "AI" },
+  { name: "Google Analytics", logo: "https://upload.wikimedia.org/wikipedia/commons/7/77/GAnalytics.svg" },
+  { name: "Tableau", logo: "https://logos-world.net/wp-content/uploads/2021/10/Tableau-Symbol.png" },
+  { name: "Power BI", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" },
+  { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" },
+  { name: "Google Cloud", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg" },
+  { name: "Microsoft Azure", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg" },
+  { name: "GitHub", logo: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" },
+  { name: "GitLab", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e1/GitLab_logo.svg" },
+  { name: "Zendesk", logo: "https://d26a57ydsghvgx.cloudfront.net/www/public/assets/images/logos/zendesk-logo-green.svg" },
+  { name: "Intercom", logo: "https://static.intercom.com/avatars/6004110/square_128/intercom-square-1653481745.png" },
+  { name: "QuickBooks", logo: "https://plugin.intuitcdn.net/designsystem/assets/images/logos/intuit-quickbooks/color/quickbooks-icon-color.svg" },
+  { name: "Xero", logo: "https://assets-global.website-files.com/5d8a98a024bdb2503b6df59c/5df489e69ac2910b03011ce9_xero-logo-hires-RGB.svg" },
+  { name: "Excel", logo: "https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" },
+  { name: "Word", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg" },
+  { name: "PowerPoint", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg" },
+  { name: "OneDrive", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Microsoft_Office_OneDrive_%282019%E2%80%93present%29.svg" },
+  { name: "Jira", logo: "https://wac-cdn.atlassian.com/dam/jcr:8f166d36-d30f-4740-8275-5d6129e1de54/jira%20software-icon-blue.svg" },
+  { name: "ClickUp", logo: "https://d2gdx5nv84qamc.cloudfront.net/uploads/2021/05/25151510/clickup-symbol-only.png" },
+  { name: "Make", logo: "https://www.make.com/en/brand-assets/logo/make-logo-1024x1024.png" },
+  { name: "OpenAI", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
 ];
 
 export default function TechStackSection() {
@@ -241,67 +97,83 @@ export default function TechStackSection() {
 
         {/* Scrolling logo carousel */}
         <div className="relative">
+          {/* Gradient masks for fade effect and centering */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-base to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-base to-transparent z-10 pointer-events-none" />
+          
           {/* First row - scrolling left to right */}
           <div className="flex space-x-6 animate-scroll-x mb-6">
             {/* Triple the logos for seamless infinite scroll - using first 20 platforms */}
-            {[...techStacks.slice(0, 20), ...techStacks.slice(0, 20), ...techStacks.slice(0, 20)].map((tech, index) => {
-              const IconComponent = IconComponents[tech.icon as keyof typeof IconComponents] || IconComponents.Default;
-              return (
-                <div
-                  key={`row1-${index}`}
-                  className="flex-shrink-0 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
-                  title={tech.name}
-                >
-                  {tech.icon === "Default" ? (
-                    <IconComponents.Default category={tech.category} />
-                  ) : (
-                    <IconComponent />
-                  )}
-                </div>
-              );
-            })}
+            {[...techStacks.slice(0, 20), ...techStacks.slice(0, 20), ...techStacks.slice(0, 20)].map((tech, index) => (
+              <div
+                key={`row1-${index}`}
+                className="flex-shrink-0 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
+                title={tech.name}
+              >
+                <img 
+                  src={tech.logo} 
+                  alt={tech.name}
+                  className="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                  onError={(e) => {
+                    // Hide the element completely if logo fails
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      parent.style.display = 'none';
+                    }
+                  }}
+                />
+              </div>
+            ))}
           </div>
 
           {/* Second row - scrolling right to left */}
           <div className="flex space-x-6 animate-scroll-x-reverse mb-6">
             {/* Triple the logos for seamless infinite scroll - using middle 20 platforms */}
-            {[...techStacks.slice(20, 40), ...techStacks.slice(20, 40), ...techStacks.slice(20, 40)].map((tech, index) => {
-              const IconComponent = IconComponents[tech.icon as keyof typeof IconComponents] || IconComponents.Default;
-              return (
-                <div
-                  key={`row2-${index}`}
-                  className="flex-shrink-0 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
-                  title={tech.name}
-                >
-                  {tech.icon === "Default" ? (
-                    <IconComponents.Default category={tech.category} />
-                  ) : (
-                    <IconComponent />
-                  )}
-                </div>
-              );
-            })}
+            {[...techStacks.slice(20, 40), ...techStacks.slice(20, 40), ...techStacks.slice(20, 40)].map((tech, index) => (
+              <div
+                key={`row2-${index}`}
+                className="flex-shrink-0 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
+                title={tech.name}
+              >
+                <img 
+                  src={tech.logo} 
+                  alt={tech.name}
+                  className="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                  onError={(e) => {
+                    // Hide the element completely if logo fails
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      parent.style.display = 'none';
+                    }
+                  }}
+                />
+              </div>
+            ))}
           </div>
 
           {/* Third row - scrolling left to right with remaining logos */}
           <div className="flex space-x-6 animate-scroll-x">
             {/* Use remaining logos and repeat for infinite scroll - using last 20+ platforms */}
-            {[...techStacks.slice(40, 60), ...techStacks.slice(40, 60), ...techStacks.slice(40, 60)].map((tech, index) => {
-              const IconComponent = IconComponents[tech.icon as keyof typeof IconComponents] || IconComponents.Default;
-              return (
-                <div
-                  key={`row3-${index}`}
-                  className="flex-shrink-0 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
-                  title={tech.name}
-                >
-                  {tech.icon === "Default" ? (
-                    <IconComponents.Default category={tech.category} />
-                  ) : (
-                    <IconComponent />
-                  )}
-                </div>
-              );
-            })}
+            {[...techStacks.slice(40, 60), ...techStacks.slice(40, 60), ...techStacks.slice(40, 60)].map((tech, index) => (
+              <div
+                key={`row3-${index}`}
+                className="flex-shrink-0 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
+                title={tech.name}
+              >
+                <img 
+                  src={tech.logo} 
+                  alt={tech.name}
+                  className="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                  onError={(e) => {
+                    // Hide the element completely if logo fails
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      parent.style.display = 'none';
+                    }
+                  }}
+                />
+              </div>
+            ))}
           </div>
         </div>
 
