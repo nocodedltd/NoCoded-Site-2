@@ -66,7 +66,7 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 1 }}
               />
             </span>{" "}
-            <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">Grow.</span>
+            <span className="text-secondary">Grow.</span>
           </h1>
         </motion.div>
         
@@ -155,7 +155,7 @@ const ImpactCalculator = () => {
                   onClick={() => setCalculationType('time')}
                   className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all ${
                     calculationType === 'time'
-                      ? 'bg-gradient-to-r from-secondary to-accent text-white'
+                      ? 'bg-secondary text-white'
                       : 'bg-white/10 text-primary hover:bg-white/20'
                   }`}
                 >
@@ -165,7 +165,7 @@ const ImpactCalculator = () => {
                   onClick={() => setCalculationType('cost')}
                   className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all ${
                     calculationType === 'cost'
-                      ? 'bg-gradient-to-r from-secondary to-accent text-white'
+                      ? 'bg-secondary text-white'
                       : 'bg-white/10 text-primary hover:bg-white/20'
                   }`}
                 >
