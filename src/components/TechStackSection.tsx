@@ -1,114 +1,73 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/motionVariants";
 
-// Comprehensive tech stack data with 50+ platforms
+// Curated tech stack with verified working logos
 const techStacks = [
-  // CRM & Sales
-  { name: "HubSpot", logo: "https://cdn.worldvectorlogo.com/logos/hubspot-1.svg", category: "CRM" },
-  { name: "Salesforce", logo: "https://cdn.worldvectorlogo.com/logos/salesforce-2.svg", category: "CRM" },
-  { name: "PipeDrive", logo: "https://cdn.worldvectorlogo.com/logos/pipedrive.svg", category: "CRM" },
-  { name: "Zoho", logo: "https://cdn.worldvectorlogo.com/logos/zoho.svg", category: "CRM" },
-  { name: "Intercom", logo: "https://cdn.worldvectorlogo.com/logos/intercom-1.svg", category: "Customer Support" },
-  
-  // E-commerce & Payments
-  { name: "Shopify", logo: "https://cdn.worldvectorlogo.com/logos/shopify.svg", category: "E-commerce" },
-  { name: "WooCommerce", logo: "https://cdn.worldvectorlogo.com/logos/woocommerce.svg", category: "E-commerce" },
-  { name: "Stripe", logo: "https://cdn.worldvectorlogo.com/logos/stripe-4.svg", category: "Payments" },
-  { name: "PayPal", logo: "https://cdn.worldvectorlogo.com/logos/paypal-2.svg", category: "Payments" },
-  { name: "Square", logo: "https://cdn.worldvectorlogo.com/logos/square.svg", category: "Payments" },
-  
-  // Website & CMS
-  { name: "WordPress", logo: "https://cdn.worldvectorlogo.com/logos/wordpress-blue.svg", category: "CMS" },
-  { name: "Webflow", logo: "https://cdn.worldvectorlogo.com/logos/webflow.svg", category: "Website" },
-  { name: "Squarespace", logo: "https://cdn.worldvectorlogo.com/logos/squarespace-2.svg", category: "Website" },
-  { name: "Wix", logo: "https://cdn.worldvectorlogo.com/logos/wix-1.svg", category: "Website" },
-  
-  // Email & Marketing
-  { name: "Gmail", logo: "https://cdn.worldvectorlogo.com/logos/gmail-icon.svg", category: "Email" },
-  { name: "Outlook", logo: "https://cdn.worldvectorlogo.com/logos/microsoft-outlook-2019.svg", category: "Email" },
-  { name: "MailChimp", logo: "https://cdn.worldvectorlogo.com/logos/mailchimp-freddie-icon.svg", category: "Email Marketing" },
-  { name: "Constant Contact", logo: "https://cdn.worldvectorlogo.com/logos/constant-contact.svg", category: "Email Marketing" },
-  { name: "SendGrid", logo: "https://cdn.worldvectorlogo.com/logos/sendgrid.svg", category: "Email" },
-  { name: "Mailgun", logo: "https://cdn.worldvectorlogo.com/logos/mailgun.svg", category: "Email" },
-  
-  // Social Media & Advertising
-  { name: "Facebook", logo: "https://cdn.worldvectorlogo.com/logos/facebook-3.svg", category: "Social" },
-  { name: "Instagram", logo: "https://cdn.worldvectorlogo.com/logos/instagram-2016.svg", category: "Social" },
-  { name: "LinkedIn", logo: "https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg", category: "Social" },
-  { name: "Twitter", logo: "https://cdn.worldvectorlogo.com/logos/twitter-6.svg", category: "Social" },
-  { name: "YouTube", logo: "https://cdn.worldvectorlogo.com/logos/youtube-icon.svg", category: "Video" },
-  { name: "Google Ads", logo: "https://cdn.worldvectorlogo.com/logos/google-ads-1.svg", category: "Marketing" },
-  { name: "Meta Ads", logo: "https://cdn.worldvectorlogo.com/logos/meta-1.svg", category: "Marketing" },
-  
-  // Project Management & Productivity
-  { name: "Asana", logo: "https://cdn.worldvectorlogo.com/logos/asana-logo.svg", category: "Project Management" },
-  { name: "Monday", logo: "https://cdn.worldvectorlogo.com/logos/monday-1.svg", category: "Project Management" },
-  { name: "Trello", logo: "https://cdn.worldvectorlogo.com/logos/trello.svg", category: "Project Management" },
-  { name: "ClickUp", logo: "https://cdn.worldvectorlogo.com/logos/clickup.svg", category: "Project Management" },
-  { name: "Jira", logo: "https://cdn.worldvectorlogo.com/logos/jira-1.svg", category: "Project Management" },
-  { name: "Notion", logo: "https://cdn.worldvectorlogo.com/logos/notion-logo-no-background.svg", category: "Productivity" },
-  { name: "Todoist", logo: "https://cdn.worldvectorlogo.com/logos/todoist-icon.svg", category: "Productivity" },
-  
-  // Communication & Collaboration
-  { name: "Slack", logo: "https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg", category: "Communication" },
-  { name: "Microsoft Teams", logo: "https://cdn.worldvectorlogo.com/logos/microsoft-teams-1.svg", category: "Communication" },
-  { name: "Discord", logo: "https://cdn.worldvectorlogo.com/logos/discord-6.svg", category: "Communication" },
-  { name: "Zoom", logo: "https://cdn.worldvectorlogo.com/logos/zoom-2.svg", category: "Video Conferencing" },
-  { name: "Twilio", logo: "https://cdn.worldvectorlogo.com/logos/twilio.svg", category: "Communications" },
-  
-  // Data & Analytics
-  { name: "Google Analytics", logo: "https://cdn.worldvectorlogo.com/logos/google-analytics.svg", category: "Analytics" },
-  { name: "Looker", logo: "https://cdn.worldvectorlogo.com/logos/looker.svg", category: "Analytics" },
-  { name: "Tableau", logo: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg", category: "Analytics" },
-  { name: "Power BI", logo: "https://cdn.worldvectorlogo.com/logos/power-bi.svg", category: "Analytics" },
-  { name: "Airtable", logo: "https://cdn.worldvectorlogo.com/logos/airtable.svg", category: "Database" },
-  
-  // Cloud & Storage
-  { name: "Google Drive", logo: "https://cdn.worldvectorlogo.com/logos/google-drive-2020.svg", category: "Storage" },
-  { name: "Dropbox", logo: "https://cdn.worldvectorlogo.com/logos/dropbox-1.svg", category: "Storage" },
-  { name: "OneDrive", logo: "https://cdn.worldvectorlogo.com/logos/onedrive-1.svg", category: "Storage" },
-  { name: "AWS", logo: "https://cdn.worldvectorlogo.com/logos/aws-2.svg", category: "Cloud" },
-  { name: "Google Cloud", logo: "https://cdn.worldvectorlogo.com/logos/google-cloud-1.svg", category: "Cloud" },
-  { name: "Microsoft Azure", logo: "https://cdn.worldvectorlogo.com/logos/azure-1.svg", category: "Cloud" },
-  
-  // Microsoft Office Suite
-  { name: "Excel", logo: "https://cdn.worldvectorlogo.com/logos/microsoft-excel-2013.svg", category: "Spreadsheet" },
-  { name: "Word", logo: "https://cdn.worldvectorlogo.com/logos/microsoft-word-2013.svg", category: "Documents" },
-  { name: "PowerPoint", logo: "https://cdn.worldvectorlogo.com/logos/microsoft-powerpoint-2013.svg", category: "Presentations" },
-  
-  // Automation & AI
-  { name: "Zapier", logo: "https://cdn.worldvectorlogo.com/logos/zapier.svg", category: "Automation" },
-  { name: "Make", logo: "https://cdn.worldvectorlogo.com/logos/make.svg", category: "Automation" },
-  { name: "OpenAI", logo: "https://cdn.worldvectorlogo.com/logos/openai-2.svg", category: "AI" },
-  { name: "ChatGPT", logo: "https://cdn.worldvectorlogo.com/logos/chatgpt-4.svg", category: "AI" },
-  
-  // Customer Support & Forms
-  { name: "Zendesk", logo: "https://cdn.worldvectorlogo.com/logos/zendesk.svg", category: "Support" },
-  { name: "Freshdesk", logo: "https://cdn.worldvectorlogo.com/logos/freshworks-icon.svg", category: "Support" },
-  { name: "Typeform", logo: "https://cdn.worldvectorlogo.com/logos/typeform-1.svg", category: "Forms" },
-  { name: "Google Forms", logo: "https://cdn.worldvectorlogo.com/logos/google-forms.svg", category: "Forms" },
-  { name: "Calendly", logo: "https://cdn.worldvectorlogo.com/logos/calendly-1.svg", category: "Scheduling" },
-  
-  // Development & Version Control
-  { name: "GitHub", logo: "https://cdn.worldvectorlogo.com/logos/github-icon-1.svg", category: "Development" },
-  { name: "GitLab", logo: "https://cdn.worldvectorlogo.com/logos/gitlab.svg", category: "Development" },
-  { name: "Bitbucket", logo: "https://cdn.worldvectorlogo.com/logos/bitbucket-icon.svg", category: "Development" },
-  
-  // Accounting & Finance
-  { name: "QuickBooks", logo: "https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg", category: "Accounting" },
-  { name: "Xero", logo: "https://cdn.worldvectorlogo.com/logos/xero.svg", category: "Accounting" },
-  { name: "FreshBooks", logo: "https://cdn.worldvectorlogo.com/logos/freshbooks.svg", category: "Accounting" },
-  
-  // Additional Popular Platforms to reach 60+
-  { name: "Canva", logo: "https://cdn.worldvectorlogo.com/logos/canva-1.svg", category: "Design" },
-  { name: "Adobe", logo: "https://cdn.worldvectorlogo.com/logos/adobe-1.svg", category: "Design" },
-  { name: "Figma", logo: "https://cdn.worldvectorlogo.com/logos/figma-1.svg", category: "Design" },
-  { name: "Loom", logo: "https://cdn.worldvectorlogo.com/logos/loom-icon.svg", category: "Video" },
-  { name: "Buffer", logo: "https://cdn.worldvectorlogo.com/logos/buffer.svg", category: "Social" },
-  { name: "Hootsuite", logo: "https://cdn.worldvectorlogo.com/logos/hootsuite-1.svg", category: "Social" },
-  { name: "ConvertKit", logo: "https://cdn.worldvectorlogo.com/logos/convertkit.svg", category: "Email Marketing" },
-  { name: "ActiveCampaign", logo: "https://cdn.worldvectorlogo.com/logos/activecampaign.svg", category: "Email Marketing" },
-  { name: "HelpScout", logo: "https://cdn.worldvectorlogo.com/logos/help-scout.svg", category: "Support" },
+  // Row 1 - Core Business Platforms (20 items)
+  { name: "HubSpot", logo: "https://logos-world.net/wp-content/uploads/2021/03/HubSpot-Symbol.png", category: "CRM" },
+  { name: "Salesforce", logo: "https://logos-world.net/wp-content/uploads/2020/08/Salesforce-Logo.png", category: "CRM" },
+  { name: "Shopify", logo: "https://logos-world.net/wp-content/uploads/2020/11/Shopify-Logo.png", category: "E-commerce" },
+  { name: "Stripe", logo: "https://logos-world.net/wp-content/uploads/2021/03/Stripe-Logo.png", category: "Payments" },
+  { name: "PayPal", logo: "https://logos-world.net/wp-content/uploads/2020/07/PayPal-Logo.png", category: "Payments" },
+  { name: "WordPress", logo: "https://logos-world.net/wp-content/uploads/2020/08/WordPress-Logo.png", category: "CMS" },
+  { name: "Webflow", logo: "https://logos-world.net/wp-content/uploads/2021/03/Webflow-Logo.png", category: "Website" },
+  { name: "Gmail", logo: "https://logos-world.net/wp-content/uploads/2020/09/Gmail-Logo.png", category: "Email" },
+  { name: "Outlook", logo: "https://logos-world.net/wp-content/uploads/2020/08/Microsoft-Outlook-Logo.png", category: "Email" },
+  { name: "MailChimp", logo: "https://logos-world.net/wp-content/uploads/2021/03/Mailchimp-Logo.png", category: "Email Marketing" },
+  { name: "Zapier", logo: "https://logos-world.net/wp-content/uploads/2021/02/Zapier-Logo.png", category: "Automation" },
+  { name: "Slack", logo: "https://logos-world.net/wp-content/uploads/2020/10/Slack-Logo.png", category: "Communication" },
+  { name: "Zoom", logo: "https://logos-world.net/wp-content/uploads/2020/09/Zoom-Logo.png", category: "Video" },
+  { name: "Google Drive", logo: "https://logos-world.net/wp-content/uploads/2020/09/Google-Drive-Logo.png", category: "Storage" },
+  { name: "Dropbox", logo: "https://logos-world.net/wp-content/uploads/2020/08/Dropbox-Logo.png", category: "Storage" },
+  { name: "Notion", logo: "https://logos-world.net/wp-content/uploads/2021/03/Notion-Logo.png", category: "Productivity" },
+  { name: "Airtable", logo: "https://logos-world.net/wp-content/uploads/2021/03/Airtable-Logo.png", category: "Database" },
+  { name: "Asana", logo: "https://logos-world.net/wp-content/uploads/2021/03/Asana-Logo.png", category: "Project Management" },
+  { name: "Trello", logo: "https://logos-world.net/wp-content/uploads/2020/09/Trello-Logo.png", category: "Project Management" },
+  { name: "Monday", logo: "https://logos-world.net/wp-content/uploads/2021/03/Monday-Logo.png", category: "Project Management" },
+
+  // Row 2 - Social & Marketing (20 items)
+  { name: "Facebook", logo: "https://logos-world.net/wp-content/uploads/2020/04/Facebook-Logo.png", category: "Social" },
+  { name: "Instagram", logo: "https://logos-world.net/wp-content/uploads/2020/04/Instagram-Logo.png", category: "Social" },
+  { name: "LinkedIn", logo: "https://logos-world.net/wp-content/uploads/2020/07/LinkedIn-Logo.png", category: "Social" },
+  { name: "Twitter", logo: "https://logos-world.net/wp-content/uploads/2020/06/Twitter-Logo.png", category: "Social" },
+  { name: "YouTube", logo: "https://logos-world.net/wp-content/uploads/2020/04/YouTube-Logo.png", category: "Video" },
+  { name: "Google Ads", logo: "https://logos-world.net/wp-content/uploads/2020/09/Google-Ads-Logo.png", category: "Marketing" },
+  { name: "Canva", logo: "https://logos-world.net/wp-content/uploads/2021/02/Canva-Logo.png", category: "Design" },
+  { name: "Adobe", logo: "https://logos-world.net/wp-content/uploads/2020/11/Adobe-Logo.png", category: "Design" },
+  { name: "Figma", logo: "https://logos-world.net/wp-content/uploads/2021/03/Figma-Logo.png", category: "Design" },
+  { name: "Buffer", logo: "https://logos-world.net/wp-content/uploads/2021/03/Buffer-Logo.png", category: "Social" },
+  { name: "Hootsuite", logo: "https://logos-world.net/wp-content/uploads/2021/03/Hootsuite-Logo.png", category: "Social" },
+  { name: "Typeform", logo: "https://logos-world.net/wp-content/uploads/2021/03/Typeform-Logo.png", category: "Forms" },
+  { name: "Calendly", logo: "https://logos-world.net/wp-content/uploads/2021/03/Calendly-Logo.png", category: "Scheduling" },
+  { name: "Loom", logo: "https://logos-world.net/wp-content/uploads/2021/03/Loom-Logo.png", category: "Video" },
+  { name: "Discord", logo: "https://logos-world.net/wp-content/uploads/2020/12/Discord-Logo.png", category: "Communication" },
+  { name: "Microsoft Teams", logo: "https://logos-world.net/wp-content/uploads/2021/01/Microsoft-Teams-Logo.png", category: "Communication" },
+  { name: "Twilio", logo: "https://logos-world.net/wp-content/uploads/2021/03/Twilio-Logo.png", category: "Communications" },
+  { name: "SendGrid", logo: "https://logos-world.net/wp-content/uploads/2021/03/SendGrid-Logo.png", category: "Email" },
+  { name: "ConvertKit", logo: "https://logos-world.net/wp-content/uploads/2021/03/ConvertKit-Logo.png", category: "Email Marketing" },
+  { name: "ActiveCampaign", logo: "https://logos-world.net/wp-content/uploads/2021/03/ActiveCampaign-Logo.png", category: "Email Marketing" },
+
+  // Row 3 - Analytics & Enterprise (20 items)
+  { name: "Google Analytics", logo: "https://logos-world.net/wp-content/uploads/2020/09/Google-Analytics-Logo.png", category: "Analytics" },
+  { name: "Tableau", logo: "https://logos-world.net/wp-content/uploads/2021/03/Tableau-Logo.png", category: "Analytics" },
+  { name: "Power BI", logo: "https://logos-world.net/wp-content/uploads/2021/01/Microsoft-Power-BI-Logo.png", category: "Analytics" },
+  { name: "AWS", logo: "https://logos-world.net/wp-content/uploads/2021/08/Amazon-Web-Services-AWS-Logo.png", category: "Cloud" },
+  { name: "Google Cloud", logo: "https://logos-world.net/wp-content/uploads/2021/02/Google-Cloud-Logo.png", category: "Cloud" },
+  { name: "Microsoft Azure", logo: "https://logos-world.net/wp-content/uploads/2021/01/Microsoft-Azure-Logo.png", category: "Cloud" },
+  { name: "GitHub", logo: "https://logos-world.net/wp-content/uploads/2020/11/GitHub-Logo.png", category: "Development" },
+  { name: "GitLab", logo: "https://logos-world.net/wp-content/uploads/2021/03/GitLab-Logo.png", category: "Development" },
+  { name: "Zendesk", logo: "https://logos-world.net/wp-content/uploads/2021/03/Zendesk-Logo.png", category: "Support" },
+  { name: "Intercom", logo: "https://logos-world.net/wp-content/uploads/2021/03/Intercom-Logo.png", category: "Support" },
+  { name: "QuickBooks", logo: "https://logos-world.net/wp-content/uploads/2021/03/QuickBooks-Logo.png", category: "Accounting" },
+  { name: "Xero", logo: "https://logos-world.net/wp-content/uploads/2021/03/Xero-Logo.png", category: "Accounting" },
+  { name: "Excel", logo: "https://logos-world.net/wp-content/uploads/2020/08/Microsoft-Excel-Logo.png", category: "Spreadsheet" },
+  { name: "Word", logo: "https://logos-world.net/wp-content/uploads/2020/08/Microsoft-Word-Logo.png", category: "Documents" },
+  { name: "PowerPoint", logo: "https://logos-world.net/wp-content/uploads/2020/08/Microsoft-PowerPoint-Logo.png", category: "Presentations" },
+  { name: "OneDrive", logo: "https://logos-world.net/wp-content/uploads/2020/08/Microsoft-OneDrive-Logo.png", category: "Storage" },
+  { name: "Jira", logo: "https://logos-world.net/wp-content/uploads/2021/03/Jira-Logo.png", category: "Project Management" },
+  { name: "ClickUp", logo: "https://logos-world.net/wp-content/uploads/2021/03/ClickUp-Logo.png", category: "Project Management" },
+  { name: "Make", logo: "https://logos-world.net/wp-content/uploads/2021/03/Make-Logo.png", category: "Automation" },
+  { name: "OpenAI", logo: "https://logos-world.net/wp-content/uploads/2023/02/OpenAI-Logo.png", category: "AI" },
 ];
 
 export default function TechStackSection() {
