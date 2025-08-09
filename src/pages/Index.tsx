@@ -143,8 +143,12 @@ const ImpactCalculator = () => {
         className="grid lg:grid-cols-2 gap-12 items-start"
       >
         {/* Input Panel */}
-        <motion.div variants={scaleIn} className="space-y-8">
-          <div className="card-dark p-8">
+        <motion.div variants={scaleIn} className="space-y-8 group relative">
+          {/* Enhanced glow effect */}
+          <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-primary/30 via-secondary/30 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg" />
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          
+          <div className="relative card-dark p-8">
             <h3 className="text-primary font-bold text-xl mb-6">Calculate Your Savings</h3>
             
             {/* Calculation Type Toggle */}
@@ -225,9 +229,13 @@ const ImpactCalculator = () => {
         </motion.div>
 
         {/* Results Panel */}
-        <motion.div variants={scaleIn} className="space-y-6">
+        <motion.div variants={scaleIn} className="space-y-6 group relative">
+          {/* Enhanced glow effect */}
+          <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-primary/30 via-secondary/30 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg" />
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          
           <div className="relative">
-            {/* Glow effect */}
+            {/* Static background glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-xl" />
             
             <div className="relative bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm border border-primary/20 rounded-3xl p-8 text-center">
@@ -371,7 +379,7 @@ const CoreServices = () => {
             title={service.title}
             description={service.description}
             badge={service.flagship ? "FLAGSHIP" : undefined}
-            glowColor="secondary"
+            glowColor="primary"
           />
         ))}
       </motion.div>
@@ -437,11 +445,15 @@ const Process = () => {
               whileHover="hover"
               initial="rest"
               animate="rest"
-              className="relative"
+              className="relative group"
             >
+              {/* Enhanced glow effect */}
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-primary/30 via-secondary/30 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg" />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
               <motion.div
                 variants={cardHover}
-                className="bg-gradient-to-br from-primary/90 to-primary backdrop-blur-sm border border-primary rounded-3xl p-8 text-center h-full"
+                className="relative bg-gradient-to-br from-primary/90 to-primary backdrop-blur-sm border border-primary rounded-3xl p-8 text-center h-full"
               >
                 <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 mx-auto">
                   <span className="text-ink font-bold text-xl">{step.number}</span>
@@ -517,10 +529,15 @@ const Testimonials = () => {
             whileHover="hover"
             initial="rest"
             animate="rest"
+            className="group relative"
           >
+            {/* Enhanced glow effect */}
+            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-primary/30 via-secondary/30 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg" />
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            
             <motion.div
               variants={cardHover}
-              className="card-dark p-6 lg:p-8 h-full flex flex-col"
+              className="relative card-dark p-6 lg:p-8 h-full flex flex-col"
             >
               <div className="flex items-start gap-4 mb-6">
                 <div className="flex-shrink-0">

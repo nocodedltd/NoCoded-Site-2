@@ -28,8 +28,9 @@ export default function FeatureCard({
       animate="rest"
       className={`group relative ${className}`}
     >
-      {/* Gradient border effect */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
+      {/* Enhanced glow effect */}
+      <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-primary/30 via-secondary/30 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg" />
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       
       <motion.div
         variants={cardHover}
