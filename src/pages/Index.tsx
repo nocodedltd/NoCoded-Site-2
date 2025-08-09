@@ -61,7 +61,7 @@ const Hero = () => {
             <span className="relative">
               Accelerate.
               <motion.div
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-secondary to-accent"
+                className="absolute -bottom-2 left-0 right-0 h-1 bg-secondary"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 1 }}
