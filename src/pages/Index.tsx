@@ -149,7 +149,7 @@ const ImpactCalculator = () => {
           <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           
           <div className="relative card-dark p-8">
-            <h3 className="text-primary font-bold text-xl mb-6">Calculate Your Savings</h3>
+            <h3 className="text-secondary font-bold text-xl mb-6">Calculate Your Savings</h3>
             
             {/* Calculation Type Toggle */}
             <div className="mb-6">
@@ -239,7 +239,7 @@ const ImpactCalculator = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-xl" />
             
             <div className="relative bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm border border-primary/20 rounded-3xl p-8 text-center">
-              <h3 className="text-primary font-bold text-xl mb-6">Your Results</h3>
+              <h3 className="text-secondary font-bold text-xl mb-6">Your Results</h3>
               
               <div className="space-y-6">
                 <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6">
@@ -458,7 +458,7 @@ const Process = () => {
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6 mx-auto">
                   <span className="text-primary font-bold text-xl">{step.number}</span>
                 </div>
-                <h3 className="text-primary font-bold text-xl mb-4">{step.title}</h3>
+                <h3 className="text-secondary font-bold text-xl mb-4">{step.title}</h3>
                 <p className="text-primary/90 leading-relaxed">{step.description}</p>
               </motion.div>
             </motion.div>

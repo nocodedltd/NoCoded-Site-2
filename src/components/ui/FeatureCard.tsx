@@ -48,7 +48,7 @@ export default function FeatureCard({
           <Icon className={`w-8 h-8 text-${glowColor}`} />
         </div>
         
-        <h3 className="text-primary font-bold text-xl mb-4">{title}</h3>
+        <h3 className="text-secondary font-bold text-xl mb-4">{title}</h3>
         <p className="text-primary/90 leading-relaxed flex-1">{description}</p>
         
         {/* Hover glow effect */}
