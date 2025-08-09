@@ -108,6 +108,10 @@ export default {
         "scroll-x": {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" }
+        },
+        "scroll-x-reverse": {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" }
         }
       },
       animation: {
@@ -123,6 +127,7 @@ export default {
         "count-up": "count-up 0.8s ease-out",
         "data-flow": "data-flow 3s ease-in-out infinite",
         'scroll-x': 'scroll-x 40s linear infinite',
+        'scroll-x-reverse': 'scroll-x-reverse 40s linear infinite',
       },
       transitionDuration: {
         "2000": "2000ms",
