@@ -98,6 +98,17 @@ const techStacks = [
   { name: "QuickBooks", logo: "https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg", category: "Accounting" },
   { name: "Xero", logo: "https://cdn.worldvectorlogo.com/logos/xero.svg", category: "Accounting" },
   { name: "FreshBooks", logo: "https://cdn.worldvectorlogo.com/logos/freshbooks.svg", category: "Accounting" },
+  
+  // Additional Popular Platforms to reach 60+
+  { name: "Canva", logo: "https://cdn.worldvectorlogo.com/logos/canva-1.svg", category: "Design" },
+  { name: "Adobe", logo: "https://cdn.worldvectorlogo.com/logos/adobe-1.svg", category: "Design" },
+  { name: "Figma", logo: "https://cdn.worldvectorlogo.com/logos/figma-1.svg", category: "Design" },
+  { name: "Loom", logo: "https://cdn.worldvectorlogo.com/logos/loom-icon.svg", category: "Video" },
+  { name: "Buffer", logo: "https://cdn.worldvectorlogo.com/logos/buffer.svg", category: "Social" },
+  { name: "Hootsuite", logo: "https://cdn.worldvectorlogo.com/logos/hootsuite-1.svg", category: "Social" },
+  { name: "ConvertKit", logo: "https://cdn.worldvectorlogo.com/logos/convertkit.svg", category: "Email Marketing" },
+  { name: "ActiveCampaign", logo: "https://cdn.worldvectorlogo.com/logos/activecampaign.svg", category: "Email Marketing" },
+  { name: "HelpScout", logo: "https://cdn.worldvectorlogo.com/logos/help-scout.svg", category: "Support" },
 ];
 
 export default function TechStackSection() {
@@ -130,9 +141,9 @@ export default function TechStackSection() {
           {/* Gradient masks for smooth fade effect - removed to fix visibility issue */}
           
           {/* First row - scrolling left to right */}
-          <div className="flex space-x-8 animate-scroll-x mb-8">
-            {/* Triple the logos for seamless infinite scroll */}
-            {[...techStacks.slice(0, 25), ...techStacks.slice(0, 25), ...techStacks.slice(0, 25)].map((tech, index) => (
+          <div className="flex space-x-6 animate-scroll-x mb-6">
+            {/* Triple the logos for seamless infinite scroll - using first 20 platforms */}
+            {[...techStacks.slice(0, 20), ...techStacks.slice(0, 20), ...techStacks.slice(0, 20)].map((tech, index) => (
               <div
                 key={`row1-${index}`}
                 className="flex-shrink-0 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
@@ -143,9 +154,11 @@ export default function TechStackSection() {
                   alt={tech.name}
                   className="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
                   onError={(e) => {
-                    // Fallback to text if logo fails to load
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement.innerHTML = `<span class="text-primary text-xs font-medium">${tech.name.slice(0, 3)}</span>`;
+                    // Hide the element completely if logo fails
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      parent.style.display = 'none';
+                    }
                   }}
                 />
               </div>
@@ -153,9 +166,9 @@ export default function TechStackSection() {
           </div>
 
           {/* Second row - scrolling right to left */}
-          <div className="flex space-x-8 animate-scroll-x-reverse">
-            {/* Triple the logos for seamless infinite scroll */}
-            {[...techStacks.slice(25, 50), ...techStacks.slice(25, 50), ...techStacks.slice(25, 50)].map((tech, index) => (
+          <div className="flex space-x-6 animate-scroll-x-reverse mb-6">
+            {/* Triple the logos for seamless infinite scroll - using middle 20 platforms */}
+            {[...techStacks.slice(20, 40), ...techStacks.slice(20, 40), ...techStacks.slice(20, 40)].map((tech, index) => (
               <div
                 key={`row2-${index}`}
                 className="flex-shrink-0 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
@@ -166,9 +179,11 @@ export default function TechStackSection() {
                   alt={tech.name}
                   className="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
                   onError={(e) => {
-                    // Fallback to text if logo fails to load
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement.innerHTML = `<span class="text-primary text-xs font-medium">${tech.name.slice(0, 3)}</span>`;
+                    // Hide the element completely if logo fails
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      parent.style.display = 'none';
+                    }
                   }}
                 />
               </div>
@@ -176,9 +191,9 @@ export default function TechStackSection() {
           </div>
 
           {/* Third row - scrolling left to right with remaining logos */}
-          <div className="flex space-x-8 animate-scroll-x">
-            {/* Use remaining logos and repeat for infinite scroll */}
-            {[...techStacks.slice(50), ...techStacks.slice(50), ...techStacks.slice(50)].map((tech, index) => (
+          <div className="flex space-x-6 animate-scroll-x">
+            {/* Use remaining logos and repeat for infinite scroll - using last 20+ platforms */}
+            {[...techStacks.slice(40, 60), ...techStacks.slice(40, 60), ...techStacks.slice(40, 60)].map((tech, index) => (
               <div
                 key={`row3-${index}`}
                 className="flex-shrink-0 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
@@ -189,9 +204,11 @@ export default function TechStackSection() {
                   alt={tech.name}
                   className="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
                   onError={(e) => {
-                    // Fallback to text if logo fails to load
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement.innerHTML = `<span class="text-primary text-xs font-medium">${tech.name.slice(0, 3)}</span>`;
+                    // Hide the element completely if logo fails
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      parent.style.display = 'none';
+                    }
                   }}
                 />
               </div>
