@@ -10,6 +10,7 @@ import FeatureCard from "@/components/ui/FeatureCard";
 import LogoGrid from "@/components/ui/LogoGrid";
 import AltMediaBlock from "@/components/ui/AltMediaBlock";
 import TechStackSection from "@/components/TechStackSection";
+import SecuritySection from "@/components/SecuritySection";
 import { fadeUp, staggerContainer, scaleIn, cardHover } from "@/lib/motionVariants";
 
 // Hero Section with enhanced styling
@@ -665,6 +666,7 @@ const Index = () => {
         <PainPoints />
         <CoreServices />
         <TechStackSection />
+        <SecuritySection />
         <Process />
         <Testimonials />
         <FinalCTA />
