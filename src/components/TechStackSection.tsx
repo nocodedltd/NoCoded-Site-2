@@ -1,55 +1,103 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/motionVariants";
 
-// Tech stack data - you can expand this list
+// Comprehensive tech stack data with 50+ platforms
 const techStacks = [
-  // Top row - popular business apps
+  // CRM & Sales
   { name: "HubSpot", logo: "https://cdn.worldvectorlogo.com/logos/hubspot-1.svg", category: "CRM" },
   { name: "Salesforce", logo: "https://cdn.worldvectorlogo.com/logos/salesforce-2.svg", category: "CRM" },
   { name: "PipeDrive", logo: "https://cdn.worldvectorlogo.com/logos/pipedrive.svg", category: "CRM" },
-  { name: "PowerShell", logo: "https://cdn.worldvectorlogo.com/logos/powershell.svg", category: "Development" },
+  { name: "Zoho", logo: "https://cdn.worldvectorlogo.com/logos/zoho.svg", category: "CRM" },
+  { name: "Intercom", logo: "https://cdn.worldvectorlogo.com/logos/intercom-1.svg", category: "Customer Support" },
+  
+  // E-commerce & Payments
+  { name: "Shopify", logo: "https://cdn.worldvectorlogo.com/logos/shopify.svg", category: "E-commerce" },
+  { name: "WooCommerce", logo: "https://cdn.worldvectorlogo.com/logos/woocommerce.svg", category: "E-commerce" },
+  { name: "Stripe", logo: "https://cdn.worldvectorlogo.com/logos/stripe-4.svg", category: "Payments" },
+  { name: "PayPal", logo: "https://cdn.worldvectorlogo.com/logos/paypal-2.svg", category: "Payments" },
+  { name: "Square", logo: "https://cdn.worldvectorlogo.com/logos/square.svg", category: "Payments" },
+  
+  // Website & CMS
   { name: "WordPress", logo: "https://cdn.worldvectorlogo.com/logos/wordpress-blue.svg", category: "CMS" },
   { name: "Webflow", logo: "https://cdn.worldvectorlogo.com/logos/webflow.svg", category: "Website" },
-  { name: "Google Drive", logo: "https://cdn.worldvectorlogo.com/logos/google-drive-2020.svg", category: "Storage" },
-  { name: "Shopify", logo: "https://cdn.worldvectorlogo.com/logos/shopify.svg", category: "E-commerce" },
-  { name: "Gmail", logo: "https://cdn.worldvectorlogo.com/logos/gmail-icon.svg", category: "Email" },
-  { name: "Stripe", logo: "https://cdn.worldvectorlogo.com/logos/stripe-4.svg", category: "Payments" },
+  { name: "Squarespace", logo: "https://cdn.worldvectorlogo.com/logos/squarespace-2.svg", category: "Website" },
+  { name: "Wix", logo: "https://cdn.worldvectorlogo.com/logos/wix-1.svg", category: "Website" },
   
-  // Second row - development and automation tools
-  { name: "Google Ads", logo: "https://cdn.worldvectorlogo.com/logos/google-ads-1.svg", category: "Marketing" },
-  { name: "Facebook", logo: "https://cdn.worldvectorlogo.com/logos/facebook-3.svg", category: "Social" },
-  { name: "LinkedIn", logo: "https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg", category: "Social" },
-  { name: "Excel", logo: "https://cdn.worldvectorlogo.com/logos/excel-4.svg", category: "Spreadsheet" },
-  { name: "Excel", logo: "https://cdn.worldvectorlogo.com/logos/microsoft-excel-2013.svg", category: "Spreadsheet" },
+  // Email & Marketing
+  { name: "Gmail", logo: "https://cdn.worldvectorlogo.com/logos/gmail-icon.svg", category: "Email" },
   { name: "Outlook", logo: "https://cdn.worldvectorlogo.com/logos/microsoft-outlook-2019.svg", category: "Email" },
-  { name: "Asana", logo: "https://cdn.worldvectorlogo.com/logos/asana-logo.svg", category: "Project Management" },
   { name: "MailChimp", logo: "https://cdn.worldvectorlogo.com/logos/mailchimp-freddie-icon.svg", category: "Email Marketing" },
-  { name: "Zendesk", logo: "https://cdn.worldvectorlogo.com/logos/zendesk.svg", category: "Support" },
-  { name: "TextCortex", logo: "https://cdn.worldvectorlogo.com/logos/textcortex.svg", category: "AI" },
-
-  // Third row - automation and AI tools
-  { name: "Zapier", logo: "https://cdn.worldvectorlogo.com/logos/zapier.svg", category: "Automation" },
-  { name: "OpenAI", logo: "https://cdn.worldvectorlogo.com/logos/openai-2.svg", category: "AI" },
-  { name: "Make", logo: "https://cdn.worldvectorlogo.com/logos/make.svg", category: "Automation" },
-  { name: "ChatGPT", logo: "https://cdn.worldvectorlogo.com/logos/chatgpt-4.svg", category: "AI" },
-  { name: "Looker", logo: "https://cdn.worldvectorlogo.com/logos/looker.svg", category: "Analytics" },
-  { name: "Notion", logo: "https://cdn.worldvectorlogo.com/logos/notion-logo-no-background.svg", category: "Productivity" },
-  { name: "Airtable", logo: "https://cdn.worldvectorlogo.com/logos/airtable.svg", category: "Database" },
-  { name: "Slack", logo: "https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg", category: "Communication" },
-  { name: "Discord", logo: "https://cdn.worldvectorlogo.com/logos/discord-6.svg", category: "Communication" },
-  { name: "Twilio", logo: "https://cdn.worldvectorlogo.com/logos/twilio.svg", category: "Communications" },
-
-  // Additional popular platforms
+  { name: "Constant Contact", logo: "https://cdn.worldvectorlogo.com/logos/constant-contact.svg", category: "Email Marketing" },
+  { name: "SendGrid", logo: "https://cdn.worldvectorlogo.com/logos/sendgrid.svg", category: "Email" },
+  { name: "Mailgun", logo: "https://cdn.worldvectorlogo.com/logos/mailgun.svg", category: "Email" },
+  
+  // Social Media & Advertising
+  { name: "Facebook", logo: "https://cdn.worldvectorlogo.com/logos/facebook-3.svg", category: "Social" },
+  { name: "Instagram", logo: "https://cdn.worldvectorlogo.com/logos/instagram-2016.svg", category: "Social" },
+  { name: "LinkedIn", logo: "https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg", category: "Social" },
+  { name: "Twitter", logo: "https://cdn.worldvectorlogo.com/logos/twitter-6.svg", category: "Social" },
+  { name: "YouTube", logo: "https://cdn.worldvectorlogo.com/logos/youtube-icon.svg", category: "Video" },
+  { name: "Google Ads", logo: "https://cdn.worldvectorlogo.com/logos/google-ads-1.svg", category: "Marketing" },
+  { name: "Meta Ads", logo: "https://cdn.worldvectorlogo.com/logos/meta-1.svg", category: "Marketing" },
+  
+  // Project Management & Productivity
+  { name: "Asana", logo: "https://cdn.worldvectorlogo.com/logos/asana-logo.svg", category: "Project Management" },
   { name: "Monday", logo: "https://cdn.worldvectorlogo.com/logos/monday-1.svg", category: "Project Management" },
   { name: "Trello", logo: "https://cdn.worldvectorlogo.com/logos/trello.svg", category: "Project Management" },
   { name: "ClickUp", logo: "https://cdn.worldvectorlogo.com/logos/clickup.svg", category: "Project Management" },
-  { name: "Calendly", logo: "https://cdn.worldvectorlogo.com/logos/calendly-1.svg", category: "Scheduling" },
-  { name: "Typeform", logo: "https://cdn.worldvectorlogo.com/logos/typeform-1.svg", category: "Forms" },
-  { name: "Mailgun", logo: "https://cdn.worldvectorlogo.com/logos/mailgun.svg", category: "Email" },
+  { name: "Jira", logo: "https://cdn.worldvectorlogo.com/logos/jira-1.svg", category: "Project Management" },
+  { name: "Notion", logo: "https://cdn.worldvectorlogo.com/logos/notion-logo-no-background.svg", category: "Productivity" },
+  { name: "Todoist", logo: "https://cdn.worldvectorlogo.com/logos/todoist-icon.svg", category: "Productivity" },
+  
+  // Communication & Collaboration
+  { name: "Slack", logo: "https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg", category: "Communication" },
+  { name: "Microsoft Teams", logo: "https://cdn.worldvectorlogo.com/logos/microsoft-teams-1.svg", category: "Communication" },
+  { name: "Discord", logo: "https://cdn.worldvectorlogo.com/logos/discord-6.svg", category: "Communication" },
+  { name: "Zoom", logo: "https://cdn.worldvectorlogo.com/logos/zoom-2.svg", category: "Video Conferencing" },
+  { name: "Twilio", logo: "https://cdn.worldvectorlogo.com/logos/twilio.svg", category: "Communications" },
+  
+  // Data & Analytics
+  { name: "Google Analytics", logo: "https://cdn.worldvectorlogo.com/logos/google-analytics.svg", category: "Analytics" },
+  { name: "Looker", logo: "https://cdn.worldvectorlogo.com/logos/looker.svg", category: "Analytics" },
+  { name: "Tableau", logo: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg", category: "Analytics" },
+  { name: "Power BI", logo: "https://cdn.worldvectorlogo.com/logos/power-bi.svg", category: "Analytics" },
+  { name: "Airtable", logo: "https://cdn.worldvectorlogo.com/logos/airtable.svg", category: "Database" },
+  
+  // Cloud & Storage
+  { name: "Google Drive", logo: "https://cdn.worldvectorlogo.com/logos/google-drive-2020.svg", category: "Storage" },
+  { name: "Dropbox", logo: "https://cdn.worldvectorlogo.com/logos/dropbox-1.svg", category: "Storage" },
+  { name: "OneDrive", logo: "https://cdn.worldvectorlogo.com/logos/onedrive-1.svg", category: "Storage" },
   { name: "AWS", logo: "https://cdn.worldvectorlogo.com/logos/aws-2.svg", category: "Cloud" },
   { name: "Google Cloud", logo: "https://cdn.worldvectorlogo.com/logos/google-cloud-1.svg", category: "Cloud" },
   { name: "Microsoft Azure", logo: "https://cdn.worldvectorlogo.com/logos/azure-1.svg", category: "Cloud" },
+  
+  // Microsoft Office Suite
+  { name: "Excel", logo: "https://cdn.worldvectorlogo.com/logos/microsoft-excel-2013.svg", category: "Spreadsheet" },
+  { name: "Word", logo: "https://cdn.worldvectorlogo.com/logos/microsoft-word-2013.svg", category: "Documents" },
+  { name: "PowerPoint", logo: "https://cdn.worldvectorlogo.com/logos/microsoft-powerpoint-2013.svg", category: "Presentations" },
+  
+  // Automation & AI
+  { name: "Zapier", logo: "https://cdn.worldvectorlogo.com/logos/zapier.svg", category: "Automation" },
+  { name: "Make", logo: "https://cdn.worldvectorlogo.com/logos/make.svg", category: "Automation" },
+  { name: "OpenAI", logo: "https://cdn.worldvectorlogo.com/logos/openai-2.svg", category: "AI" },
+  { name: "ChatGPT", logo: "https://cdn.worldvectorlogo.com/logos/chatgpt-4.svg", category: "AI" },
+  
+  // Customer Support & Forms
+  { name: "Zendesk", logo: "https://cdn.worldvectorlogo.com/logos/zendesk.svg", category: "Support" },
+  { name: "Freshdesk", logo: "https://cdn.worldvectorlogo.com/logos/freshworks-icon.svg", category: "Support" },
+  { name: "Typeform", logo: "https://cdn.worldvectorlogo.com/logos/typeform-1.svg", category: "Forms" },
+  { name: "Google Forms", logo: "https://cdn.worldvectorlogo.com/logos/google-forms.svg", category: "Forms" },
+  { name: "Calendly", logo: "https://cdn.worldvectorlogo.com/logos/calendly-1.svg", category: "Scheduling" },
+  
+  // Development & Version Control
   { name: "GitHub", logo: "https://cdn.worldvectorlogo.com/logos/github-icon-1.svg", category: "Development" },
+  { name: "GitLab", logo: "https://cdn.worldvectorlogo.com/logos/gitlab.svg", category: "Development" },
+  { name: "Bitbucket", logo: "https://cdn.worldvectorlogo.com/logos/bitbucket-icon.svg", category: "Development" },
+  
+  // Accounting & Finance
+  { name: "QuickBooks", logo: "https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg", category: "Accounting" },
+  { name: "Xero", logo: "https://cdn.worldvectorlogo.com/logos/xero.svg", category: "Accounting" },
+  { name: "FreshBooks", logo: "https://cdn.worldvectorlogo.com/logos/freshbooks.svg", category: "Accounting" },
 ];
 
 export default function TechStackSection() {
@@ -79,13 +127,12 @@ export default function TechStackSection() {
 
         {/* Scrolling logo carousel */}
         <div className="relative">
-          {/* Gradient masks for smooth fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-base to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-base to-transparent z-10 pointer-events-none" />
+          {/* Gradient masks for smooth fade effect - removed to fix visibility issue */}
           
           {/* First row - scrolling left to right */}
           <div className="flex space-x-8 animate-scroll-x mb-8">
-            {[...techStacks.slice(0, 15), ...techStacks.slice(0, 15)].map((tech, index) => (
+            {/* Triple the logos for seamless infinite scroll */}
+            {[...techStacks.slice(0, 25), ...techStacks.slice(0, 25), ...techStacks.slice(0, 25)].map((tech, index) => (
               <div
                 key={`row1-${index}`}
                 className="flex-shrink-0 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
@@ -107,9 +154,33 @@ export default function TechStackSection() {
 
           {/* Second row - scrolling right to left */}
           <div className="flex space-x-8 animate-scroll-x-reverse">
-            {[...techStacks.slice(15, 30), ...techStacks.slice(15, 30)].map((tech, index) => (
+            {/* Triple the logos for seamless infinite scroll */}
+            {[...techStacks.slice(25, 50), ...techStacks.slice(25, 50), ...techStacks.slice(25, 50)].map((tech, index) => (
               <div
                 key={`row2-${index}`}
+                className="flex-shrink-0 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
+                title={tech.name}
+              >
+                <img 
+                  src={tech.logo} 
+                  alt={tech.name}
+                  className="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                  onError={(e) => {
+                    // Fallback to text if logo fails to load
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.parentElement.innerHTML = `<span class="text-primary text-xs font-medium">${tech.name.slice(0, 3)}</span>`;
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Third row - scrolling left to right with remaining logos */}
+          <div className="flex space-x-8 animate-scroll-x">
+            {/* Use remaining logos and repeat for infinite scroll */}
+            {[...techStacks.slice(50), ...techStacks.slice(50), ...techStacks.slice(50)].map((tech, index) => (
+              <div
+                key={`row3-${index}`}
                 className="flex-shrink-0 w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
                 title={tech.name}
               >
@@ -134,12 +205,12 @@ export default function TechStackSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-center mt-12"
+          className="text-center mt-16"
         >
-          <p className="text-primary/80 text-sm mb-4">
+          <p className="text-primary/80 text-base mb-6 max-w-2xl mx-auto">
             Don't see your platform? We work with 100+ tools and can build custom integrations.
           </p>
-          <a href="/contact" className="btn-secondary">
+          <a href="/contact" className="btn-secondary inline-flex items-center gap-2">
             Ask About Your Platform
           </a>
         </motion.div>

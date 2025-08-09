@@ -126,7 +126,7 @@ export default {
         "stagger": "stagger 0.6s ease-out",
         "count-up": "count-up 0.8s ease-out",
         "data-flow": "data-flow 3s ease-in-out infinite",
-        'scroll-x': 'scroll-x 40s linear infinite',
+        'scroll-x': 'scroll-x 45s linear infinite',
         'scroll-x-reverse': 'scroll-x-reverse 40s linear infinite',
       },
       transitionDuration: {
