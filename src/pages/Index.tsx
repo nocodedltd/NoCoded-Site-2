@@ -453,13 +453,13 @@ const Process = () => {
               
               <motion.div
                 variants={cardHover}
-                className="relative bg-gradient-to-br from-primary/90 to-primary backdrop-blur-sm border border-primary rounded-3xl p-8 text-center h-full"
+                className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 text-center h-full"
               >
-                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 mx-auto">
-                  <span className="text-ink font-bold text-xl">{step.number}</span>
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <span className="text-primary font-bold text-xl">{step.number}</span>
                 </div>
-                <h3 className="text-ink font-bold text-xl mb-4">{step.title}</h3>
-                <p className="text-ink/80 leading-relaxed">{step.description}</p>
+                <h3 className="text-primary font-bold text-xl mb-4">{step.title}</h3>
+                <p className="text-primary/90 leading-relaxed">{step.description}</p>
               </motion.div>
             </motion.div>
           ))}
