@@ -34,7 +34,7 @@ export default function FeatureCard({
       
       <motion.div
         variants={cardHover}
-        className="relative rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 p-8 h-full flex flex-col"
+        className="relative rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 p-8 h-full flex flex-col text-center"
       >
         {badge && (
           <div className="mb-4">
@@ -44,7 +44,7 @@ export default function FeatureCard({
           </div>
         )}
         
-        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br from-${glowColor}/20 to-${glowColor}/10 flex items-center justify-center mb-6`}>
+        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br from-${glowColor}/20 to-${glowColor}/10 flex items-center justify-center mb-6 mx-auto`}>
           <Icon className={`w-8 h-8 text-${glowColor}`} />
         </div>
         

@@ -149,7 +149,7 @@ const ImpactCalculator = () => {
           <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           
           <div className="relative card-dark p-8">
-            <h3 className="text-secondary font-bold text-xl mb-6">Calculate Your Savings</h3>
+            <h3 className="text-secondary font-bold text-xl mb-6 text-center">Calculate Your Savings</h3>
             
             {/* Calculation Type Toggle */}
             <div className="mb-6">
@@ -537,13 +537,11 @@ const Testimonials = () => {
             
             <motion.div
               variants={cardHover}
-              className="relative card-dark p-6 lg:p-8 h-full flex flex-col"
+              className="relative card-dark p-6 lg:p-8 h-full flex flex-col text-center"
             >
-              <div className="flex items-start gap-4 mb-6">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center">
-                    <Star className="w-6 h-6 text-primary" />
-                  </div>
+              <div className="flex items-center justify-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center">
+                  <Star className="w-6 h-6 text-primary" />
                 </div>
               </div>
               
